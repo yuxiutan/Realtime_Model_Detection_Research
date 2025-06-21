@@ -1,7 +1,6 @@
 # Realtime_LSTM_Chain_Detection
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-**License:** MIT  
-**Author:** [Yuxiu Tan](https://github.com/yuxiutan)
 
 ## 📌 Project Overview
 
