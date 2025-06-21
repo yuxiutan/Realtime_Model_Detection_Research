@@ -60,8 +60,8 @@ Realtime_LSTM_Chain_Detection/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yuxiutan/LSTM-Behavior-Detection.git
-cd LSTM-Behavior-Detection
+git clone https://github.com/yuxiutan/Realtime_LSTM_Chain_Detection.git
+cd Realtime_LSTM_Chain_Detection
 ```
 
 ### 2. Create Virtual Environment (Optional but Recommended)
@@ -79,25 +79,25 @@ pip install -r requirements.txt
 
 ## 🚀 How to Use
 
-Step 1: Prepare Dataset
+### Step 1: Prepare Dataset
 
 ```bash
 python preprocessing/prepare_dataset.py
 ```
 
-Step 2: Train the Model
+### Step 2: Train the Model
 
 ```bash
 python model/build_model.py
 ```
 
-Step 3: Run Real-time Detection
+### Step 3: Run Real-time Detection
 
 ```bash
 python Realtime_detection.py
 ```
 
-Step 4: Launch the Dashboard
+### Step 4: Launch the Dashboard
 
 ```bash
 python app.py
