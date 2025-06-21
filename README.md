@@ -109,7 +109,6 @@ python app.py
 - output_training_history.png – Training accuracy and loss trends
 - classification_report.csv – Detailed classification report
 
-
 ## 🧠 Model Highlights
 - Bidirectional LSTM to capture context in both directions
 - Embedding layers to vectorize categorical ICS log features
@@ -117,11 +116,8 @@ python app.py
 - Softmax output for attack chain classification
 - Similarity comparison against precomputed class vectors for abnormal detection
 
-
 ## 📄 License
 This project is licensed under the MIT License.
 
-
 ## 🙏 Acknowledgements
-- Inspired by real-world ICS defense needs.
-- Thanks to contributors and open-source communities.
+- Special thanks to the experts who provided technical support and advice.
