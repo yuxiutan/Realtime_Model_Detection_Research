@@ -97,9 +97,11 @@ python app.py
 
 ## 📌 Project Features
 
-- LSTM-based sequential behavior classification
-- Wazuh integration for log collection from ICS environments
+- 🔍 **LSTM-based sequential behavior classification**
+- 🛡️ **Wazuh integration** for log collection from ICS environments
 - 📊 **Real-time similarity scoring** between observed events and trained attack vectors
 - 📉 **Model performance visualization** (Confusion Matrix, ROC/AUC, Training History)
 - ⚙️ **Dash-powered dashboard** for live monitoring
 - 🔁 **Modular design** for easy reuse of preprocessing, model, and API logic
+
+
