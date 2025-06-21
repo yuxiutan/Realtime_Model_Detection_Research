@@ -7,7 +7,7 @@ This project aims to detect abnormal behaviors in industrial OT environments by 
 ## 📂 Project Structure
 
 ```bash
-LSTM-Behavior-Detection/
+Realtime_LSTM_Chain_Detection/
 ├── analysis/
 │   ├── classification_report.csv
 │   └── output_training_metrics.json
