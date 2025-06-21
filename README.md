@@ -13,18 +13,26 @@ LSTM-Behavior-Detection/
 │   └── output_training_metrics.json
 ├── classes/
 │   ├── agent_id_classes.npy
-│   └── agent_ip_classes.npy
-│   └── agent_name_classes.npy
-│   └── attack_chain_classes.npy
-│   └── eventdata_image_classes.npy
-│   └── mitre_id_classes.npy
+│   ├── agent_ip_classes.npy
+│   ├── agent_name_classes.npy
+│   ├── attack_chain_classes.npy
+│   ├── eventdata_image_classes.npy
+│   ├── mitre_id_classes.npy
 │   └── rule_id_classes.npy
-├── app.py                     # Dash-based real-time dashboard
-├── build_model.py             # Train and evaluate the LSTM model
-├── Realtime_detection.py      # Run real-time inference and compute similarity
-├── requirements.txt           # List of dependencies
-├── generated_wazuh_logs.jsonl # Raw training dataset from Wazuh API
+├── data/
+│   └── generated_wazuh_logs.jsonl
 ├── model/
-│   
+│   ├── attack_chain_vectors.npy
+│   ├── build_model.py         # Train and evaluate the LSTM model
+│   └── lstm_attack_chain_model.keras
 ├── preprocessing/
 │   └── prepare_dataset.py     # Label encoding, padding, slicing
+├── utils/
+│   └── wazuh_api.py
+├── Realtime_detection.py      # Run real-time inference and compute similarity
+├── app.py                     # Dash-based real-time dashboard
+├── encoders.pkl
+├── model_info.txt             
+├── requirements.txt           # List of dependencies
+├── generated_wazuh_logs.jsonl # Raw training dataset from Wazuh API
+
