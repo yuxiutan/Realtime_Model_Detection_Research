@@ -117,7 +117,7 @@ python app.py
 - Similarity comparison against precomputed class vectors for abnormal detection
 
 ## 📄 License
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](LICENSE).
 
 ## 🙏 Acknowledgements
 - Special thanks to the experts who provided technical support and advice.
