@@ -1,0 +1,5 @@
+Model: LSTM Attack Chain Classifier
+Date: 2025-05-21 18:54:34
+Input Features: image, ruleName, attack_stage
+Model Path: model/lstm_attack_chain_model.keras
+Label Classes: IT_LSASS_Dump, IT_Powershell_based64, IT_Ransomware, OT_CommandInjection, OT_RemoteAccess, normal
