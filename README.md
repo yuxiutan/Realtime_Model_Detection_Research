@@ -7,6 +7,16 @@
 
 This project aims to detect abnormal behaviors in industrial OT environments by training an LSTM model with logs collected from **Wazuh** via API. It identifies potential multi-step attack chains and triggers alerts based on similarity scores. A real-time monitoring dashboard is provided using **Dash**.
 
+## 📌 Project Features
+
+- 🔍 **LSTM-based sequential behavior classification**
+- 🛡️ **Wazuh integration** for log collection from ICS environments
+- 📊 **Real-time similarity scoring** between observed events and trained attack vectors
+- 📉 **Model performance visualization** (Confusion Matrix, ROC/AUC, Training History)
+- ⚙️ **Dash-powered dashboard** for live monitoring
+- 🔁 **Modular design** for easy reuse of preprocessing, model, and API logic
+
+
 ## 📂 Project Structure
 
 ```bash
@@ -95,13 +105,16 @@ python app.py
 - output_training_history.png – Training accuracy and loss trends
 - classification_report.csv – Detailed classification report
 
-## 📌 Project Features
+## 🧠 Model Highlights
+- Bidirectional LSTM to capture context in both directions
+- Embedding layers to vectorize categorical ICS log features
+- Sequence length = 10 (customizable)
+- Softmax output for attack chain classification
+- Similarity comparison against precomputed class vectors for abnormal detection
 
-- 🔍 **LSTM-based sequential behavior classification**
-- 🛡️ **Wazuh integration** for log collection from ICS environments
-- 📊 **Real-time similarity scoring** between observed events and trained attack vectors
-- 📉 **Model performance visualization** (Confusion Matrix, ROC/AUC, Training History)
-- ⚙️ **Dash-powered dashboard** for live monitoring
-- 🔁 **Modular design** for easy reuse of preprocessing, model, and API logic
+## 📄 License
+This project is licensed under the MIT License.
 
-
+## 🙏 Acknowledgements
+- Inspired by real-world ICS defense needs.
+- Thanks to contributors and open-source communities.
