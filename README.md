@@ -40,6 +40,7 @@ Realtime_LSTM_Chain_Detection/
 ├── output_roc_auc.png               # ROC curve visualization
 ├── output_training_history.png      # Accuracy/loss training curves
 └── requirements.txt                 # Python dependency list
+```
 
 ## ⚙️ Setup Instructions
 ### 1. Clone the Repository
@@ -47,18 +48,20 @@ Realtime_LSTM_Chain_Detection/
 ```bash
 git clone https://github.com/yuxiutan/LSTM-Behavior-Detection.git
 cd LSTM-Behavior-Detection
+```
 
 ### 2. Create Virtual Environment (Optional but Recommended)
 
 ```bash
 python -m venv venv
 source venv/bin/activate   # For Windows: venv\Scripts\activate
+```
 
 ## 3. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
-
+```
 
 
 
