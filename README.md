@@ -63,18 +63,42 @@ source venv/bin/activate   # For Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
+## 🚀 How to Use
 
+Step 1: Prepare Dataset
 
+```bash
+python preprocessing/prepare_dataset.py
+```
 
+Step 2: Train the Model
 
+```bash
+python model/build_model.py
+```
 
+Step 3: Run Real-time Detection
 
+```bash
+python Realtime_detection.py
+```
 
+Step 4: Launch the Dashboard
+
+```bash
+python app.py
+```
+
+## 📈 Visual Outputs
+- output_confusion_matrix.png – Model confusion matrix
+- output_roc_auc.png – ROC curve and AUC
+- output_training_history.png – Training accuracy and loss trends
+- classification_report.csv – Detailed classification report
 
 ## 📌 Project Features
 
-- 🔍 **LSTM-based sequential behavior classification**
-- 🛡️ **Wazuh integration** for log collection from ICS environments
+- LSTM-based sequential behavior classification
+- Wazuh integration for log collection from ICS environments
 - 📊 **Real-time similarity scoring** between observed events and trained attack vectors
 - 📉 **Model performance visualization** (Confusion Matrix, ROC/AUC, Training History)
 - ⚙️ **Dash-powered dashboard** for live monitoring
