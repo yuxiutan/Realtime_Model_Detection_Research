@@ -53,6 +53,10 @@ Realtime_LSTM_Chain_Detection/
 ```
 
 ## ⚙️ Setup Instructions
+### Environment
+- Operating System: Ubuntu 22.04 (Best)
+- RAM: 12GB
+
 ### 1. Clone the Repository
 
 ```bash
@@ -64,7 +68,7 @@ cd LSTM-Behavior-Detection
 
 ```bash
 python -m venv venv
-source venv/bin/activate   # For Windows: venv\Scripts\activate
+source venv/bin/activate
 ```
 
 ## 3. Install Dependencies
