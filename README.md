@@ -1,7 +1,7 @@
 # Realtime_LSTM_Chain_Detection
 
 **License:** MIT  
-**Author:** [Yuxiou Tan](https://github.com/yuxiutan)
+**Author:** [Yuxiu Tan](https://github.com/yuxiutan)
 
 ## 📌 Project Overview
 
