@@ -20,7 +20,7 @@ LSTM-Behavior-Detection/
 │   ├── mitre_id_classes.npy
 │   └── rule_id_classes.npy
 ├── data/
-│   └── generated_wazuh_logs.jsonl
+│   └── generated_wazuh_logs.jsonl     # Raw training dataset from Wazuh API
 ├── model/
 │   ├── attack_chain_vectors.npy
 │   ├── build_model.py         # Train and evaluate the LSTM model
@@ -32,7 +32,9 @@ LSTM-Behavior-Detection/
 ├── Realtime_detection.py      # Run real-time inference and compute similarity
 ├── app.py                     # Dash-based real-time dashboard
 ├── encoders.pkl
-├── model_info.txt             
-├── requirements.txt           # List of dependencies
-├── generated_wazuh_logs.jsonl # Raw training dataset from Wazuh API
+├── model_info.txt
+├── output_confusion_matrix.png
+├── output_roc_auc.png
+├── output_training_history.png             
+└── requirements.txt           # List of dependencies
 
