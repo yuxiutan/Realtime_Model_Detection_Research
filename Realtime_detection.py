@@ -177,7 +177,7 @@ class LogFileHandler(FileSystemEventHandler):
 
 class IntegratedSecurityDetector:
     def __init__(self, 
-                 log_file_path="/home/danish/realtime-lstm-detection/data/wazuh_log.log",
+                 log_file_path="/home/danish/Realtime_LSTM_Chain_Detection/data/wazuh_log.log",
                  model_path="model/lstm_attack_chain_model.keras",
                  encoders_path="encoders.pkl",
                  classes_path="classes",
@@ -1179,7 +1179,7 @@ def main():
     """Main function"""
     # Configuration parameters
     config = {
-        'log_file_path': '/home/danish/realtime-lstm-detection/data/wazuh_log.log',
+        'log_file_path': '/home/danish/Realtime_LSTM_Chain_Detection/data/wazuh_log.log',
         'model_path': 'model/lstm_attack_chain_model.keras',
         'encoders_path': 'encoders.pkl', 
         'classes_path': 'classes',
