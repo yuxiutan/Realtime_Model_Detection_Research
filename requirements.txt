@@ -1,4 +1,4 @@
-tensorflow-cpu==2.19.0
+tensorflow==2.19.0
 keras==3.9.2
 scikit-learn==1.6.1
 numpy==1.26.4
