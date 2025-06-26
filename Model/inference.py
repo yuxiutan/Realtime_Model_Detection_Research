@@ -163,7 +163,7 @@ def focal_loss(gamma=2.0, alpha=0.25):
 
 if __name__ == "__main__":
     try:
-        transformer_model = tf.keras.models.load_model('improved_transformer_model.keras', 
+        transformer_model = tf.keras.models.load_model('Model/improved_transformer_model.keras', 
                                                      custom_objects={'focal_loss_fn': focal_loss(gamma=2.0, alpha=0.25)})
         print("Transformer model loaded successfully")
     except Exception as e:
@@ -171,7 +171,7 @@ if __name__ == "__main__":
         exit(1)
     
     try:
-        with open('improved_preprocessors.pkl', 'rb') as f:
+        with open('Model/improved_preprocessors.pkl', 'rb') as f:
             preprocessors = pickle.load(f)
             tokenizer = preprocessors['tokenizer']
             scaler = preprocessors['scaler']
@@ -181,7 +181,7 @@ if __name__ == "__main__":
         print(f"Failed to load preprocessors: {e}")
         exit(1)
     
-    file_path = 'new_attack_data.jsonl'
+    file_path = 'data/new_attack_data.jsonl'
     try:
         new_data = load_jsonl_data(file_path)
     except Exception as e:
