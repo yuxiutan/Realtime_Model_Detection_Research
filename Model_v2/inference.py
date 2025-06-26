@@ -2,98 +2,73 @@ import pandas as pd
 import numpy as np
 import json
 import tensorflow as tf
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import StandardScaler
+from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
-import pickle
 import ipaddress
 import os
-import matplotlib.pyplot as plt
-import seaborn as sns
+import pickle
+from scipy.stats import gaussian_kde
 
-# Load saved model and preprocessors
-def load_model_and_preprocessors(model_path='improved_chain_aware_lstm_model.keras', 
-                                preprocessor_path='improved_preprocessors.pkl'):
-    """Load the trained model and preprocessors"""
-    print("Loading model and preprocessors...")
+def ip_to_int(ip):
     try:
-        model = tf.keras.models.load_model(model_path)
-        with open(preprocessor_path, 'rb') as f:
-            preprocessors = pickle.load(f)
-        tokenizer = preprocessors['tokenizer']
-        scaler = preprocessors['scaler']
-        print("Model and preprocessors loaded successfully!")
-        return model, tokenizer, scaler
-    except Exception as e:
-        raise ValueError(f"Failed to load model or preprocessors: {e}")
+        return int(ipaddress.IPv4Address(ip))
+    except:
+        return 0
 
-# Load new data
-def load_new_jsonl_file(file_path, chain_instance_id="test_chain"):
-    """Load a new JSONL file and assign a chain_instance_id"""
-    print(f"Loading new data file {file_path}...")
-    if not os.path.exists(file_path):
-        raise ValueError(f"File {file_path} does not exist")
-    
+def load_jsonl_data(file_path):
     data = []
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f"File {file_path} does not exist")
+    
     with open(file_path, 'r', encoding='utf-8') as f:
         for line in f:
             try:
                 record = json.loads(line.strip())
-                record['chain_instance_id'] = chain_instance_id  # Assign a unique chain_instance_id to new data
                 data.append(record)
             except json.JSONDecodeError as e:
-                print(f"JSON parsing error: {e}")
+                print(f"JSON parsing error at line: {e}")
                 continue
     
     if not data:
-        raise ValueError("No valid data in the new data file")
+        raise ValueError("No data loaded successfully")
     
     df = pd.DataFrame(data)
     print(f"Successfully loaded {len(df)} logs")
     return df
 
-# Preprocess new data
-def preprocess_new_data(df, tokenizer, scaler, max_sequence_length=40):
-    """Preprocess new data consistently with training"""
-    print("Starting preprocessing of new data...")
+def preprocess_new_data(df, tokenizer, scaler, vectorizer, max_sequence_length=60):
+    df = df.copy()
     
-    # Check required columns
+    # Ensure required columns exist
     required_columns = ['@timestamp', 'agent.ip', 'agent.name', 'agent.id', 'rule.id', 'rule.mitre.id', 'full_log']
-    if not all(col in df.columns for col in required_columns):
-        missing = [col for col in required_columns if col not in df.columns]
-        raise ValueError(f"Missing columns in new data: {missing}")
+    for col in required_columns:
+        if col not in df.columns:
+            df[col] = '' if col == 'full_log' else 0
     
-    # Sort by chain_instance_id and timestamp
-    df = df.sort_values(['chain_instance_id', '@timestamp']).reset_index(drop=True)
+    # Data validation
+    if df['@timestamp'].isna().all():
+        raise ValueError("All @timestamp values are NaN")
+    if df['full_log'].isna().all() or df['full_log'].eq('').all():
+        raise ValueError("All full_log values are NaN or empty strings")
     
-    # Handle @timestamp
+    # Time feature processing
     df['@timestamp'] = pd.to_numeric(df['@timestamp'], errors='coerce')
     df['@timestamp'] = df['@timestamp'].fillna(df['@timestamp'].median())
     
-    # Extract time features
     df['hour'] = pd.to_datetime(df['@timestamp'], unit='ms').dt.hour
     df['day_of_week'] = pd.to_datetime(df['@timestamp'], unit='ms').dt.dayofweek
-    
-    # Normalize timestamp
     timestamp_std = df['@timestamp'].std()
     if timestamp_std == 0 or np.isnan(timestamp_std):
         df['@timestamp_normalized'] = df['@timestamp']
     else:
         df['@timestamp_normalized'] = (df['@timestamp'] - df['@timestamp'].mean()) / timestamp_std
     
-    # Calculate time difference
-    df['time_diff'] = df.groupby('chain_instance_id')['@timestamp'].diff().fillna(0)
-    time_diff_std = df['time_diff'].std()
-    if time_diff_std == 0 or np.isnan(time_diff_std):
-        df['time_diff_normalized'] = df['time_diff']
-    else:
-        df['time_diff_normalized'] = (df['time_diff'] - df['time_diff'].mean()) / time_diff_std
+    df['time_diff'] = 0
+    df['time_diff_normalized'] = 0
     
-    # Convert IP address to integer and normalize
-    def ip_to_int(ip):
-        try:
-            return int(ipaddress.IPv4Address(ip))
-        except:
-            return 0
-    
+    # IP address conversion
     df['agent.ip_int'] = df['agent.ip'].apply(ip_to_int)
     ip_std = df['agent.ip_int'].std()
     if ip_std == 0 or np.isnan(ip_std):
@@ -101,134 +76,159 @@ def preprocess_new_data(df, tokenizer, scaler, max_sequence_length=40):
     else:
         df['agent.ip_normalized'] = (df['agent.ip_int'] - df['agent.ip_int'].mean()) / ip_std
     
-    # Calculate log length feature
+    # Log length
     df['log_length'] = df['full_log'].astype(str).str.len()
-    df['log_length_normalized'] = (df['log_length'] - df['log_length'].mean()) / df['log_length'].std()
+    log_length_std = df['log_length'].std()
+    if log_length_std == 0 or np.isnan(log_length_std):
+        df['log_length_normalized'] = df['log_length']
+    else:
+        df['log_length_normalized'] = (df['log_length'] - df['log_length'].mean()) / log_length_std
     
-    # Calculate position feature within attack chain
-    df['position_in_chain'] = df.groupby('chain_instance_id').cumcount()
-    df['chain_total_length'] = df.groupby('chain_instance_id')['chain_instance_id'].transform('count')
-    df['position_ratio'] = df['position_in_chain'] / df['chain_total_length']
+    df['position_in_chain'] = 0
+    df['chain_total_length'] = 1
+    df['position_ratio'] = 0
     
-    # Label Encoding (using the encoder from training, assuming it was saved)
-    # Assume new data category values have been seen in training data
-    # Handle unknown categories if present (e.g., set to default value)
-    df['agent.name_encoded'] = df['agent.name'].astype(str).map(
-        lambda x: tokenizer.word_index.get(x, 0) if hasattr(tokenizer, 'word_index') else 0
-    )
-    df['agent.id_encoded'] = df['agent.id'].astype(str).map(
-        lambda x: tokenizer.word_index.get(x, 0) if hasattr(tokenizer, 'word_index') else 0
-    )
-    df['rule.id_encoded'] = df['rule.id'].astype(str).map(
-        lambda x: tokenizer.word_index.get(x, 0) if hasattr(tokenizer, 'word_index') else 0
-    )
-    df['rule.mitre.id_encoded'] = df['rule.mitre.id'].astype(str).map(
-        lambda x: tokenizer.word_index.get(x, 0) if hasattr(tokenizer, 'word_index') else 0
-    )
+    df['rule.id'] = df['rule.id'].astype(str)
+    df['prev_rule_id'] = 'NONE'
+    df['next_rule_id'] = 'NONE'
     
-    # Tokenize and sequence full_log
+    # MITRE ATT&CK features
+    df['mitre_tactic'] = df['rule.mitre.id'].apply(lambda x: str(x).split('.')[0] if isinstance(x, (str, int, float)) else 'UNKNOWN')
+    df['mitre_technique'] = df['rule.mitre.id'].apply(lambda x: str(x) if isinstance(x, (str, int, float)) else 'UNKNOWN')
+    
+    df['agent.name'] = df['agent.name'].astype(str)
+    df['agent.id'] = df['agent.id'].astype(str)
+    
+    # Skip LabelEncoder, use fixed values
+    df['agent.name_encoded'] = 0
+    df['agent.id_encoded'] = 0
+    df['rule.id_encoded'] = 0
+    df['mitre_tactic_encoded'] = 0
+    df['mitre_technique_encoded'] = 0
+    df['prev_rule_id_encoded'] = 0
+    df['next_rule_id_encoded'] = 0
+    
+    # N-gram features
+    ngram_features = vectorizer.transform(df['full_log'].astype(str)).toarray()
+    ngram_columns = vectorizer.get_feature_names_out()
+    df_ngram = pd.DataFrame(ngram_features, columns=[f'ngram_{col}' for col in ngram_columns])
+    df = pd.concat([df, df_ngram], axis=1)
+    
+    # Character-level tokenization
     sequences = tokenizer.texts_to_sequences(df['full_log'].astype(str))
     padded_sequences = pad_sequences(sequences, maxlen=max_sequence_length, padding='post', truncating='post')
     
-    # Extract static features
-    static_features = df[['@timestamp_normalized', 'time_diff_normalized', 'agent.ip_normalized', 
-                         'agent.name_encoded', 'agent.id_encoded', 'rule.id_encoded', 'rule.mitre.id_encoded',
-                         'hour', 'day_of_week', 'log_length_normalized', 'position_ratio']].values
+    # Static features
+    static_features_columns = [
+        '@timestamp_normalized', 'time_diff_normalized', 'agent.ip_normalized',
+        'agent.name_encoded', 'agent.id_encoded', 'rule.id_encoded',
+        'mitre_tactic_encoded', 'mitre_technique_encoded',
+        'prev_rule_id_encoded', 'next_rule_id_encoded',
+        'hour', 'day_of_week', 'log_length_normalized', 'position_ratio'
+    ] + [f'ngram_{col}' for col in ngram_columns]
     
-    # Handle NaN and infinite values
+    static_features = df[static_features_columns].values
     static_features = np.nan_to_num(static_features, nan=0.0, posinf=1.0, neginf=-1.0)
-    
-    # Standardize using the scaler from training
     static_features = scaler.transform(static_features)
     
     return padded_sequences, static_features, df
 
-# Perform model inference
-def perform_inference(model, X_seq, X_static, df, output_file='inference_results.csv'):
-    """Perform inference on new data and save results"""
-    print("Starting model inference...")
+def predict_new_data(df, transformer_model, tokenizer, scaler, vectorizer, max_sequence_length=60):
+    X_seq, X_static, processed_df = preprocess_new_data(df, tokenizer, scaler, vectorizer, max_sequence_length)
     
-    # Make predictions
-    predictions = model.predict({'sequence_input': X_seq, 'static_input': X_static}, verbose=0)
-    predicted_classes = np.argmax(predictions, axis=1)
-    prediction_confidences = np.max(predictions, axis=1)
+    transformer_pred = transformer_model.predict({'sequence_input': X_seq, 'static_input': X_static})
     
-    # Compile results
+    ensemble_pred = transformer_pred
+    predicted_classes = np.argmax(ensemble_pred, axis=1)
+    prediction_confidences = np.max(ensemble_pred, axis=1)
+    
     results = pd.DataFrame({
-        'chain_instance_id': df['chain_instance_id'],
-        '@timestamp': df['@timestamp'],
         'full_log': df['full_log'],
         'predicted_chain': predicted_classes,
         'confidence': prediction_confidences
     })
     
-    # Add probabilities for each class
     for i in range(3):
-        results[f'prob_chain_{i}'] = predictions[:, i]
+        results[f'chain_{i}_probability'] = ensemble_pred[:, i]
     
-    # Print first few prediction results
-    print(f"\nFirst {min(10, len(results))} prediction results:")
-    for idx, row in results.head_GB(10).iterrows():
-        print(f"Sample {idx+1}:")
-        print(f"  Chain Instance ID: {row['chain_instance_id']}")
-        print(f"  Timestamp: {row['@timestamp']}")
-        print(f"  Log: {row['full_log'][:100]}...")  # Display only first 100 characters
-        print(f"  Predicted Attack Chain: {row['predicted_chain']}")
-        print(f"  Confidence: {row['confidence']:.3f}")
-        print(f"  Probabilities: Chain 0={row['prob_chain_0']:.3f}, "
-              f"Chain 1={row['prob_chain_1']:.3f}, Chain 2={row['prob_chain_2']:.3f}")
-        print("-" * 50)
-    
-    # Summarize predictions by chain_instance_id
-    chain_summary = results.groupby(['chain_instance_id', 'predicted_chain']).size().unstack(fill_value=0)
-    print("\nPrediction distribution for each attack chain:")
-    print(chain_summary)
-    
-    # Visualize confidence distribution
-    plt.figure(figsize=(10, 6))
-    sns.histplot(results['confidence'], bins=30, kde=True)
-    plt.title('Prediction Confidence Distribution', fontsize=14)
-    plt.xlabel('Confidence', fontsize=12)
-    plt.ylabel('Count', fontsize=12)
-    plt.grid(True, alpha=0.3)
-    plt.savefig('confidence_distribution.png', dpi=300, bbox_inches='tight')
-    print("Confidence distribution plot saved as 'confidence_distribution.png'")
-    plt.show()
-    
-    # Save results to CSV
-    results.to_csv(output_file, index=False)
-    print(f"Inference results saved as '{output_file}'")
-    
-    return results, chain_summary
+    return results, processed_df
 
-# Main program - inference test
+def focal_loss(gamma=2.0, alpha=0.25):
+    def focal_loss_fn(y_true, y_pred):
+        y_pred = tf.clip_by_value(y_pred, tf.keras.backend.epsilon(), 1. - tf.keras.backend.epsilon())
+        cross_entropy = -y_true * tf.math.log(y_pred)
+        loss = alpha * y_true * tf.pow(1. - y_pred, gamma) * cross_entropy
+        return tf.reduce_mean(loss)
+    return focal_loss_fn
+
 if __name__ == "__main__":
-    # Set random seed for reproducibility
-    np.random.seed(42)
-    tf.random.set_seed(42)
+    try:
+        transformer_model = tf.keras.models.load_model('improved_transformer_model.keras', 
+                                                     custom_objects={'focal_loss_fn': focal_loss(gamma=2.0, alpha=0.25)})
+        print("Transformer model loaded successfully")
+    except Exception as e:
+        print(f"Failed to load Transformer model: {e}")
+        exit(1)
     
-    # Assume new data file path
-    new_data_file = 'new_attack_data.jsonl'  # Replace with your new data file path
+    try:
+        with open('improved_preprocessors.pkl', 'rb') as f:
+            preprocessors = pickle.load(f)
+            tokenizer = preprocessors['tokenizer']
+            scaler = preprocessors['scaler']
+            vectorizer = preprocessors['vectorizer']
+        print("Preprocessors loaded successfully")
+    except Exception as e:
+        print(f"Failed to load preprocessors: {e}")
+        exit(1)
     
-    # Step 1: Load model and preprocessors
-    model, tokenizer, scaler = load_model_and_preprocessors()
+    file_path = 'new_attack_data.jsonl'
+    try:
+        new_data = load_jsonl_data(file_path)
+    except Exception as e:
+        print(f"Failed to load data: {e}")
+        exit(1)
     
-    # Step 2: Load new data
-    new_df = load_new_jsonl_file(new_data_file, chain_instance_id="test_chain_001")
-    
-    # Step 3: Preprocess new data
-    X_seq_new, X_static_new, processed_df = preprocess_new_data(
-        new_df, tokenizer, scaler, max_sequence_length=40
-    )
-    
-    # Step 4: Perform inference and save results
-    results, chain_summary = perform_inference(
-        model, X_seq_new, X_static_new, processed_df, output_file='inference_results.csv'
-    )
-    
-    print("\nInference completed!")
-    print("="*50)
-    print("Generated files:")
-    print("1. inference_results.csv - Detailed inference results")
-    print("2. confidence_distribution.png - Prediction confidence distribution plot")
-    print("="*50)
+    try:
+        results, processed_df = predict_new_data(
+            new_data,
+            transformer_model,
+            tokenizer,
+            scaler,
+            vectorizer
+        )
+        
+        print("\nInference results (first 10, see CSV file for full results):")
+        print(results[['full_log', 'predicted_chain', 'confidence', 
+                      'chain_0_probability', 'chain_1_probability', 'chain_2_probability']].head(10))
+        
+        results.to_csv('prediction_results.csv', index=False)
+        print("\nInference results saved as 'prediction_results.csv'")
+
+        # Generate prediction confidence distribution plot
+        plt.figure(figsize=(10, 6))
+        confidence_values = results['confidence']
+        
+        # Plot histogram
+        plt.hist(confidence_values, bins=20, color='skyblue', alpha=0.7, label='Confidence Distribution')
+        
+        # Calculate and plot KDE curve
+        kde = gaussian_kde(confidence_values)
+        x_range = np.linspace(min(confidence_values), max(confidence_values), 100)
+        kde_values = kde(x_range) * len(confidence_values) * (max(confidence_values) - min(confidence_values)) / 20  # Scale adjustment to match histogram
+        plt.plot(x_range, kde_values, 'b-', lw=2, label='KDE')
+        
+        plt.title('Prediction Confidence Distribution')
+        plt.xlabel('Confidence')
+        plt.ylabel('Count')
+        plt.legend()
+        plt.grid(True, alpha=0.3)
+        plt.tight_layout()
+        
+        # Save plot
+        plt.savefig('prediction_confidence_distribution.png', dpi=300, bbox_inches='tight')
+        print("Prediction confidence distribution plot saved as 'prediction_confidence_distribution.png'")
+        plt.close()
+
+    except Exception as e:
+        print(f"Inference process failed: {e}")
+        exit(1)
