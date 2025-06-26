@@ -21,25 +21,25 @@ This project aims to detect abnormal behaviors in industrial OT environments by 
 Realtime_Transformer_Chain_Detection/
 ├── Model/                        # Model evaluation outputs
 │ ├── Report/
-│ │ ├──
-│ │ ├──
-│ │ ├──
-│ │ ├──
-│ │ ├──
-│ │ └── output_training_metrics.json   # Accuracy/loss logs per epoch # Precision, Recall, F1-score per class
-│ ├──
-│ ├──
-│ ├──
-│ ├──
-│ ├──  
-│ └── output_training_metrics.json   # Accuracy/loss logs per epoch
+│ │ ├── prediction_confidence_distribution_Chain0.png
+│ │ ├── prediction_confidence_distribution_Chain1.png
+│ │ ├── prediction_confidence_distribution_Chain2.png
+│ │ ├── prediction_results_Chain0.csv
+│ │ ├── prediction_results_Chain1.csv
+│ │ └── prediction_results_Chain2.csv
+│ ├── attack_chain_0.jsonl
+│ ├── attack_chain_1.jsonl
+│ ├── attack_chain_2.jsonl
+│ ├── inference.py
+│ ├── model_build.py  # Train LSTM model, output metrics
+│ └── new_attack_data.jsonl
 ├── utils/
 │ └── wazuh_api.py                   # Script to fetch and parse Wazuh API logs
 ├── data/
 │ └── generated_wazuh_logs.jsonl     # Raw logs from Wazuh API (JSONL)
 ├── model/
 │ ├── attack_chain_vectors.npy       # Precomputed attack chain embeddings
-│ ├── build_model.py                 # Train LSTM model, output metrics
+│ ├── build_model.py                 
 │ └── lstm_attack_chain_model.keras  # Saved trained model
 ├── model_info.txt                   # Model hyperparameters and info
 ├── Model_confusion_matrix.png      # Confusion matrix visualization
