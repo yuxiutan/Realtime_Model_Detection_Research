@@ -389,7 +389,7 @@ if __name__ == "__main__":
     tf.random.set_seed(42)
     
     # Load data
-    file_paths = ['attack_chain_0.jsonl', 'attack_chain_1.jsonl', 'attack_chain_2.jsonl']
+    file_paths = ['data/attack_chain_0.jsonl', 'data/attack_chain_1.jsonl', 'data/attack_chain_2.jsonl']
     df = load_jsonl_files_with_chain_id(file_paths)
     
     # Check data distribution
