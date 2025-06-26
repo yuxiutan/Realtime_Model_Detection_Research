@@ -27,13 +27,14 @@ Realtime_Transformer_Chain_Detection/
 │ │ ├── prediction_results_Chain0.csv
 │ │ ├── prediction_results_Chain1.csv
 │ │ └── prediction_results_Chain2.csv
-│ ├── attack_chain_0.jsonl
-│ ├── attack_chain_1.jsonl
-│ ├── attack_chain_2.jsonl
 │ ├── improved_preprocessors.pkl
 │ ├── improved_transformer_model.keras  # Saved trained model
 │ ├── inference.py
 │ ├── model_build.py  # Train LSTM model, output metrics
+├── data/
+│ ├── attack_chain_0.jsonl
+│ ├── attack_chain_1.jsonl
+│ ├── attack_chain_2.jsonl
 │ └── new_attack_data.jsonl
 ├── utils/
 │ └── wazuh_api.py                   # Script to fetch and parse Wazuh API logs
