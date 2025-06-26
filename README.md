@@ -95,8 +95,13 @@ python app.py
 ### Step 5 (Optional) : Automated scheduling
 
 ```bash
+sudo apt install jq
+
 chmod +x /home/youruser/Realtime_Transformer_Chain_Detection/utils/clear_log.sh
 chmod +x /home/youruser/Realtime_Transformer_Chain_Detection/utils/wazuh_api.sh
+
+chown youruser:youruser /home/youruser/Realtime_Transformer_Chain_Detection/data
+chmod u+w /home/youruser/Realtime_Transformer_Chain_Detection/data
 
 crontab -e
 
