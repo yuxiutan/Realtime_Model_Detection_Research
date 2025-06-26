@@ -1,4 +1,4 @@
-# Realtime_LSTM_Chain_Detection
+# Realtime_Transformer_Chain_Detection
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 ## 📌 Project Overview
@@ -7,7 +7,7 @@ This project aims to detect abnormal behaviors in industrial OT environments by 
 
 ## 📌 Project Features
 
-- 🔍 **LSTM-based sequential behavior classification**
+- 🔍 **Transformer-based sequential behavior classification**
 - 🛡️ **Wazuh integration** for log collection from ICS environments
 - 📊 **Real-time similarity scoring** between observed events and trained attack vectors
 - 📉 **Model performance visualization** (Confusion Matrix, ROC/AUC, Training History)
