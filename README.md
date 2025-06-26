@@ -91,6 +91,19 @@ python inference.py
 python app.py
 ```
 
+### Step 5 (Optional) : Automated scheduling
+
+```bash
+chmod +x /home/youruser/Realtime_Transformer_Chain_Detection/utils/clear_log.sh
+chmod +x /home/youruser/Realtime_Transformer_Chain_Detection/utils/wazuh_api.sh
+
+crontab -e
+
+0 0 * * * /bin/bash /home/youruser/Realtime_Transformer_Chain_Detection/utils/clear_log.sh
+*/5 * * * * /bin/bash /home/youruser/Realtime_Transformer_Chain_Detection/utils/wazuh_api.sh
+```
+
+
 ## 📈 Visual Outputs
 - Model_confusion_matrix.png – Model confusion matrix
 - Model_roc_auc.png – ROC curve and AUC
