@@ -1,0 +1,250 @@
+chain_instance_id,@timestamp,full_log,predicted_chain,confidence,prob_chain_0,prob_chain_1,prob_chain_2
+test_chain_001,,Non network or service local logon.,0,0.9981803,0.9981803,0.0017890517,3.055161e-05
+test_chain_001,,Special privileges assigned to new logon,0,0.9946076,0.9946076,0.005208457,0.00018393925
+test_chain_001,,Non service account logged off.,0,0.9985974,0.9985974,0.0013843263,1.8188826e-05
+test_chain_001,,Windows Logon Success,0,0.99018633,0.99018633,0.009370377,0.00044337832
+test_chain_001,,Windows Logon Success,0,0.9999793,0.9999793,1.3025983e-07,2.0466618e-05
+test_chain_001,,Windows Logon Success,0,0.99997944,0.99997944,1.301975e-07,2.0402738e-05
+test_chain_001,,Windows Logon Success,0,0.99997944,0.99997944,1.3013495e-07,2.033888e-05
+test_chain_001,,Non network or service local logon.,0,0.9981789,0.9981789,0.0017893631,3.1689295e-05
+test_chain_001,,Special privileges assigned to new logon.,0,0.99465644,0.99465644,0.00515075,0.00019269546
+test_chain_001,,Non service account logged off.,0,0.99858916,0.99858916,0.0013918147,1.8951072e-05
+test_chain_001,,Software protection service scheduled successfully..,0,0.99093896,0.99093896,0.008475202,0.00058594113
+test_chain_001,,Special privileges assigned to new logon..,0,0.99468625,0.99468625,0.0051162886,0.00019747541
+test_chain_001,,Windows Logon Success,0,0.9903724,0.9903724,0.009174528,0.00045285875
+test_chain_001,,Special privileges assigned to new logon.,0,0.99469537,0.99469537,0.005107446,0.000197128
+test_chain_001,,Windows Logon Success,0,0.9904138,0.9904138,0.009131266,0.00045494942
+test_chain_001,,Special privileges assigned to new logon.,0,0.99471235,0.99471235,0.0050888383,0.0001988754
+test_chain_001,,Windows Logon Success,0,0.99045473,0.99045473,0.009088195,0.0004570494
+test_chain_001,,Special privileges assigned to new logon.,0,0.9947294,0.9947294,0.0050699753,0.0002006781
+test_chain_001,,Non service account logged off,0,0.9985771,0.9985771,0.001403172,1.9797288e-05
+test_chain_001,,Special privileges assigned to new logon.,0,0.99474734,0.99474734,0.005049925,0.00020265226
+test_chain_001,,Windows Logon Success,0,0.9905368,0.9905368,0.009001213,0.0004619245
+test_chain_001,,Windows User Logoff,0,0.9892329,0.9892329,0.010174255,0.0005928368
+test_chain_001,,Windows User Logoff,0,0.98925626,0.98925626,0.010149522,0.00059422426
+test_chain_001,,Windows User Logoff,0,0.9892789,0.9892789,0.010125506,0.0005955553
+test_chain_001,,Non network or service local logon.,0,0.9981524,0.9981524,0.0018125736,3.512201e-05
+test_chain_001,,Special privileges assigned to new logon.,0,0.9948025,0.9948025,0.0049900427,0.00020747546
+test_chain_001,,Non network or service local logon.,0,0.9981508,0.9981508,0.001813713,3.5494304e-05
+test_chain_001,,Special privileges assigned to new logon.,0,0.9948136,0.9948136,0.0049767345,0.00020951584
+test_chain_001,,Non service account logged off,2,0.9818242,0.017231066,0.0009447015,0.9818242
+test_chain_001,,Non network or service local logon.,2,0.9855057,0.013502007,0.0009922963,0.9855057
+test_chain_001,,Special privileges assigned to new logon.,0,0.9948294,0.9948294,0.0049579376,0.00021274963
+test_chain_001,,Non service account logged off.,0,0.9985707,0.9985707,0.0014082566,2.1067073e-05
+test_chain_001,,Non network or service local logon.,0,0.9981494,0.9981494,0.0018140867,3.65248e-05
+test_chain_001,,Special privileges assigned to new logon.,0,0.99484885,0.99484885,0.0049354094,0.00021568332
+test_chain_001,,Non service account logged off.,0,0.99857223,0.99857223,0.0014065152,2.1218371e-05
+test_chain_001,,Non network or service local logon.,0,0.9981488,0.9981488,0.0018141124,3.707598e-05
+test_chain_001,,Special privileges assigned to new logon.,0,0.99486864,0.99486864,0.0049129734,0.0002183958
+test_chain_001,,Non service account logged off.,0,0.998575,0.998575,0.0014037326,2.1350492e-05
+test_chain_001,,Windows Logon Success,0,0.9908606,0.9908606,0.008655744,0.00048360345
+test_chain_001,,Windows Logon Success,0,0.9908782,0.9908782,0.0086369775,0.00048481175
+test_chain_001,,Windows Logon Success,0,0.9908957,0.9908957,0.00861826,0.0004860242
+test_chain_001,,Non network or service local logon.,0,0.9981445,0.9981445,0.0018172846,3.8177914e-05
+test_chain_001,,Special privileges assigned to new logon.,0,0.9949092,0.9949092,0.0048678727,0.0002228413
+test_chain_001,,Non service account logged off.,0,0.9985794,0.9985794,0.0013989811,2.1720547e-05
+test_chain_001,,Windows Logon Success,0,0.99093246,0.99093246,0.008571398,0.00049618114
+test_chain_001,,Non network or service local logon.,0,0.99813914,0.99813914,0.001821895,3.892698e-05
+test_chain_001,,Special privileges assigned to new logon.,0,0.9949356,0.9949356,0.004838657,0.0002258817
+test_chain_001,,Non service account logged off.,0,0.99857664,0.99857664,0.0014012425,2.2174965e-05
+test_chain_001,,Windows Logon Success,0,0.99998194,0.99998194,1.2754789e-07,1.7830964e-05
+test_chain_001,,Non network or service local logon.,0,0.99813384,0.99813384,0.0018263806,3.983762e-05
+test_chain_001,,Special privileges assigned to new logon.,0,0.9949598,0.9949598,0.004810595,0.0002296388
+test_chain_001,,Non service account logged off.,0,0.99857247,0.99857247,0.0014047596,2.2686321e-05
+test_chain_001,,Windows Logon Success,0,0.99098504,0.99098504,0.0084903315,0.00052467163
+test_chain_001,,Software protection service scheduled successfully,0,0.99998015,0.99998015,1.2453826e-07,1.9717383e-05
+test_chain_001,,Non network or service local logon.,0,0.9981269,0.9981269,0.0018320024,4.1006e-05
+test_chain_001,,Special privileges assigned to new logon.,0,0.9949651,0.9949651,0.0047990414,0.00023573976
+test_chain_001,,Non service account logged off.,0,0.99856555,0.99856555,0.001410901,2.3516317e-05
+test_chain_001,,Special privileges assigned to new logon,0,0.99998695,0.99998695,7.934985e-08,1.28451375e-05
+test_chain_001,,"Successful Remote Logon Detected-User: Cindy-NTLM authentication, possible pass-the-hash attack-Possible RDP connection. Verify that BOB is allowed to perform",0,0.999978,0.999978,8.776819e-08,2.1852327e-05
+test_chain_001,,Special privileges assigned to new logon.,0,0.99998695,0.99998695,7.917615e-08,1.2817018e-05
+test_chain_001,,"Successful Remote Logon Detected-User: Cindy-NTLM authentication, possible pass-the-hash attack-Possible RDP connection. Verify that BOB is allowed to perform",0,0.999978,0.999978,8.760279e-08,2.1792619e-05
+test_chain_001,,Special privileges assigned to new logon.,0,0.99998707,0.99998707,7.903116e-08,1.2741191e-05
+test_chain_001,,"Successful Remote Logon Detected-User: Cindy NTLM authentication, possible pass-the-hash attack-Possible RDP connection. Verify that BOB is allowed to perform",0,0.9999781,0.9999781,8.7437705e-08,2.1733036e-05
+test_chain_001,,Special privileges assigned to new logon,0,0.9999872,0.9999872,7.891474e-08,1.2618419e-05
+test_chain_001,,"Successful Remote Logon Detected-User: Cindy NTLM authentication, possible pass-the-hash attack Possible RDP connection. Verify that BOB is allowed to perform",0,0.9999781,0.9999781,8.727225e-08,2.1673612e-05
+test_chain_001,,Windows User Logoff,0,0.9999816,0.9999816,1.4073751e-07,1.8189754e-05
+test_chain_001,,Windows User Logoff,0,0.9999817,0.9999817,1.4067056e-07,1.8132947e-05
+test_chain_001,,Windows User Logoff,0,0.9999817,0.9999817,1.4060323e-07,1.8076227e-05
+test_chain_001,,Non network or service local logon.,0,0.9981033,0.9981033,0.0018510004,4.5595243e-05
+test_chain_001,,Special privileges assigned to new logon.,0,0.9949682,0.9949682,0.004774613,0.0002572784
+test_chain_001,,Non service account logged off,0,0.9985458,0.9985458,0.0014282332,2.5934154e-05
+test_chain_001,,Special privileges assigned to new logon..,0,0.9999874,0.9999874,7.8281815e-08,1.2414998e-05
+test_chain_001,,"Successful Remote Logon Detected-User: Cindy - NTLM authentication, possible pass-the-hash attack Possible RDP connection. Verify that BOB is allowed to perform",0,0.9999781,0.9999781,8.754717e-08,2.1732767e-05
+test_chain_001,,Special privileges assigned to new logon,0,0.99998754,0.99998754,7.819498e-08,1.2249444e-05
+test_chain_001,,"Successful Remote Logon Detected-User: Cindy NTLM authentication, possible pass-the-hash attack-Possible RDP connection. Verify that BOB is allowed to perform",0,0.9999785,0.9999785,8.6531045e-08,2.1385005e-05
+test_chain_001,,Special privileges assigned to new logon.,0,0.99998754,0.99998754,7.8023795e-08,1.2222664e-05
+test_chain_001,,"Successful Remote Logon Detected-User: Cindy-NTLM authentication, possible pass-the-hash attack-Possible RDP connection, Verify that BOB is allowed to perform",0,0.9999785,0.9999785,8.642433e-08,2.1330521e-05
+test_chain_001,,Windows User Logaft,0,0.9999723,0.9999723,2.4189242e-07,2.7415887e-05
+test_chain_001,,Special privileges assigned to new logon.,0,0.99998766,0.99998766,7.78095e-08,1.21142775e-05
+test_chain_001,,"Successful Remote Logon Detected-User: Cindy-NTLM authentication, possible pass-the-hash attack Possible RDP connection. Verify that BOB is allowed to perform",0,0.9999786,0.9999786,8.626443e-08,2.1249329e-05
+test_chain_001,,Windows User Logoff,0,0.9999824,0.9999824,1.3973218e-07,1.7354629e-05
+test_chain_001,,Windows User Logoff,0,0.99998254,0.99998254,1.3969928e-07,1.730543e-05
+test_chain_001,,Windows User Logoff,0,0.99998254,0.99998254,1.397082e-07,1.7262211e-05
+test_chain_001,,Special privileges assigned to new logon.,0,0.9999879,0.9999879,7.7453855e-08,1.1935876e-05
+test_chain_001,,"Successful Remote Logon Detected-User: Cindy NTLM authentication, possible pass-the-hash attack-Possible RDP connection. Verify that BOB is allowed to perform",0,0.9999787,0.9999787,8.599797e-08,2.1114412e-05
+test_chain_001,,Special privileges assigned to new logon.,0,0.9999879,0.9999879,7.731246e-08,1.1865249e-05
+test_chain_001,,"Successful Remote Logon Detected-User: Cindy - NTLM authentication, possible pass-the-hash attack-Possible RDP connection. Verify that BOB is allowed to perform",0,0.9999785,0.9999785,8.678956e-08,2.1345904e-05
+test_chain_001,,"Special privileges assigned to new logon,",0,0.999988,0.999988,7.717016e-08,1.179502e-05
+test_chain_001,,"Successful Remote Logon Detected-User: Cindy NTLM authentication, possible pass-the-hash attack-Possible RDP connection. Verify that BOB is allowed to perform",0,0.99997884,0.99997884,8.585556e-08,2.1023354e-05
+test_chain_001,,Windows User Logoff,0,0.9999829,0.9999829,1.3976877e-07,1.6962418e-05
+test_chain_001,,Special privileges assigned to new logon..,0,0.99998814,0.99998814,7.693135e-08,1.1734379e-05
+test_chain_001,,"Successful Remote Logon Detected-User: Cindy-NTLM authentication, possible pass-the-hash attack Possible RDP connection. Verify that BOB is allowed to perform",0,0.99997884,0.99997884,8.578338e-08,2.096317e-05
+test_chain_001,,Windows User Logoff,0,0.999983,0.999983,1.3979398e-07,1.6835587e-05
+test_chain_001,,Windows User Logoff,0,0.999983,0.999983,1.3980305e-07,1.6793574e-05
+test_chain_001,,Windows User Logott,0,0.9999632,0.9999632,3.5259797e-07,3.6410474e-05
+test_chain_001,,Non network or service local logon.,0,0.9980529,0.9980529,0.0018906248,5.640198e-05
+test_chain_001,,Special privileges assigned to new logon.,0,0.9950079,0.9950079,0.0046857735,0.00030632413
+test_chain_001,,Non service account logged off.,0,0.9984962,0.9984962,0.0014716305,3.219383e-05
+test_chain_001,,Special privileges assigned to new logon.,0,0.9999884,0.9999884,7.646456e-08,1.1419304e-05
+test_chain_001,,"Successful Remote Logon Detected-User: Cindy-NTLM authentication, possible pass-the-hash attack-Possible RDP connection. Verify that BOB is allowed to perform",0,0.9999791,0.9999791,8.5385416e-08,2.074841e-05
+test_chain_001,,Special privileges assigned to new logon,0,0.9999885,0.9999885,7.645538e-08,1.1313898e-05
+test_chain_001,,"Successful Remote Logon Detected-User: Cindy NTLM authentication, possible pass-the-hash attack-Possible RDP connection. Verify that BOB is allowed to perform",0,0.9999792,0.9999792,8.5199e-08,2.0671347e-05
+test_chain_001,,Special privileges assigned to new logon.,0,0.9999885,0.9999885,7.6272734e-08,1.1288473e-05
+test_chain_001,,"Successful Remote Logon Detected-User: Cindy NTLM authentication, possible pass-the-hash attack Possible RDP connection. Verify that BOB is allowed to perform",0,0.9999792,0.9999792,8.501313e-08,2.0594684e-05
+test_chain_001,,Non network or service local logon.,0,0.99800295,0.99800295,0.0019365804,6.0412494e-05
+test_chain_001,,Special privileges assigned to new logon.,0,0.9949351,0.9949351,0.0047270227,0.00033790563
+test_chain_001,,Non service account logged off.,0,0.99846345,0.99846345,0.001501888,3.4694847e-05
+test_chain_001,,Special privileges assigned to new logon.,0,0.99998873,0.99998873,7.603453e-08,1.1127135e-05
+test_chain_001,,"Successful Remote Logon Detected-User: Cindy NTLM authentication, possible pass-the-hash attack-Possible RDP connection. Verify that BOB is allowed to perform",0,0.99997944,0.99997944,8.455018e-08,2.0404217e-05
+test_chain_001,,Windows User Logoff,0,0.9999837,0.9999837,1.399396e-07,1.6134394e-05
+test_chain_001,,Windows User Logoff,0,0.9999837,0.9999837,1.3994828e-07,1.6094114e-05
+test_chain_001,,Windows User Logoff,0,0.9999837,0.9999837,1.3995695e-07,1.6053858e-05
+test_chain_001,,Windows User Logoff,0,0.99998385,0.99998385,1.3996565e-07,1.6013768e-05
+test_chain_001,,Special privileges assigned to new logon.,0,0.99998885,0.99998885,7.573291e-08,1.0938862e-05
+test_chain_001,,"Successful Remote Logon Detected-User: Cindy-NTLM authentication, possible pass-the-hash attack-Possible RDP connection. Verify that BOB is allowed to perform",0,0.9999797,0.9999797,8.399822e-08,2.0177857e-05
+test_chain_001,,Special privileges assigned to new logon.,0,0.999989,0.999989,7.561096e-08,1.088006e-05
+test_chain_001,,"Successful Remote Logon Detected-User: Cindy - NTLM authentication, possible pass-the-hash attack-Possible RDP connection, Verify that BOB is allowed to perform",0,0.99997944,0.99997944,8.465426e-08,2.0377227e-05
+test_chain_001,,Special privileges assigned to new logon.,0,0.999989,0.999989,7.54892e-08,1.0821448e-05
+test_chain_001,,"Successful Remote Logon Detected-User: Cindy-NTLM authentication, possible pass-the-hash attack Possible RDP connection. Verify that BOB is allowed to perform",0,0.9999798,0.9999798,8.3632294e-08,2.0028549e-05
+test_chain_001,,Special privileges assigned to new logon,0,0.9999891,0.9999891,7.543883e-08,1.0727574e-05
+test_chain_001,,"Successful Remote Logon Detected-User: Cindy NTLM authentication, possible pass-the-hash attack-Possible RDP connection. Verify that BOB is allowed to perform",0,0.9999799,0.9999799,8.344954e-08,1.9954197e-05
+test_chain_001,,Windows User Logoff,0,0.9999842,0.9999842,1.4004273e-07,1.5657173e-05
+test_chain_001,,Windows User Logoff,0,0.9999842,0.9999842,1.4005101e-07,1.561798e-05
+test_chain_001,,Windows User Logoff,0,0.9999842,0.9999842,1.4005943e-07,1.5578977e-05
+test_chain_001,,Non network or service local logon.,0,0.99785554,0.99785554,0.002066427,7.7964934e-05
+test_chain_001,,Special privileges assigned to new logon.,0,0.9944947,0.9944947,0.005062617,0.0004427612
+test_chain_001,,Non service account logged off.,0,0.9983385,0.9983385,0.0016160771,4.5514527e-05
+test_chain_001,,Non network or service local logon.,0,0.99783,0.99783,0.0020886608,8.1351616e-05
+test_chain_001,,Special privileges assigned to new logon.,0,0.9944087,0.9944087,0.005127129,0.000464264
+test_chain_001,,Non service account logged off.,0,0.99832267,0.99832267,0.001629856,4.7489448e-05
+test_chain_001,,Windows Logon Success,0,0.99998564,0.99998564,1.2581906e-07,1.4221358e-05
+test_chain_001,,Windows Logon Success,0,0.99998564,0.99998564,1.258253e-07,1.4186409e-05
+test_chain_001,,Non network or service local logon.,0,0.9977874,0.9977874,0.002125481,8.72343e-05
+test_chain_001,,Special privileges assigned to new logon..,0,0.9942763,0.9942763,0.005213447,0.0005102991
+test_chain_001,,Non service account logged off.,0,0.99829674,0.99829674,0.001652284,5.099481e-05
+test_chain_001,,Windows Logon Success,0,0.99998575,0.99998575,1.2576412e-07,1.4045438e-05
+test_chain_001,,Windows Logon Success,0,0.99998575,0.99998575,1.2572791e-07,1.400992e-05
+test_chain_001,,Software protection service scheduled successfully.,0,0.9999843,0.9999843,1.1957137e-07,1.5438398e-05
+test_chain_001,,Non network or service local logon.,0,0.9977422,0.9977422,0.0021629955,9.479101e-05
+test_chain_001,,privileges assigned to new,0,0.9720055,0.9720055,0.017985584,0.010008881
+test_chain_001,,Non service account logged off.,0,0.9982658,0.9982658,0.001678206,5.6062072e-05
+test_chain_001,,Non network or service local logon.,0,0.99771756,0.99771756,0.002183076,9.9301295e-05
+test_chain_001,,Special privileges assigned to new logon.,0,0.99395454,0.99395454,0.005456372,0.000589144
+test_chain_001,,Non service account logged off.,0,0.9982515,0.9982515,0.0016896932,5.8743524e-05
+test_chain_001,,Windows Logon Success,0,0.99074656,0.99074656,0.007876721,0.0013766432
+test_chain_001,,Windows Logon Success,0,0.99068844,0.99068844,0.007904259,0.0014072385
+test_chain_001,,Windows Logon Success,0,0.9906302,0.9906302,0.00793152,0.0014382771
+test_chain_001,,Non network or service local logon.,0,0.9976552,0.9976552,0.0022338552,0.00011089492
+test_chain_001,,Special privileges assigned to new logon.,0,0.9937396,0.9937396,0.0056025484,0.0006577795
+test_chain_001,,Non service account logged off.,0,0.99821687,0.99821687,0.0017182232,6.502338e-05
+test_chain_001,,Non network or service local logon.,0,0.99763405,0.99763405,0.0022503114,0.000115632465
+test_chain_001,,Special privileges assigned to new logon..,0,0.9936917,0.9936917,0.005618699,0.0006895199
+test_chain_001,,Non service account logged off.,0,0.9982012,0.9982012,0.0017311884,6.765725e-05
+test_chain_001,,Non network or service local logon.,0,0.9976116,0.9976116,0.0022680515,0.00012029774
+test_chain_001,,Special privileges assigned to new logon.,0,0.9935665,0.9935665,0.0057187798,0.00071468356
+test_chain_001,,Non service account logged off.,0,0.99818295,0.99818295,0.0017462968,7.065908e-05
+test_chain_001,,Non network or service local logon.,0,0.99757826,0.99757826,0.002294886,0.00012676138
+test_chain_001,,Special privileges assigned to new logon.,0,0.99343544,0.99343544,0.0058073043,0.0007573683
+test_chain_001,,Non service account logged off.,0,0.9981555,0.9981555,0.0017696043,7.481516e-05
+test_chain_001,,Non network or service local logon.,0,0.9975401,0.9975401,0.002325576,0.00013431396
+test_chain_001,,Special privileges assigned to new logon.,0,0.9932629,0.9932629,0.0059222826,0.0008147858
+test_chain_001,,Non service account logged off,0,0.9981294,0.9981294,0.0017918639,7.8821824e-05
+test_chain_001,,Non network or service local logon.,0,0.99749756,0.99749756,0.00235936,0.00014315416
+test_chain_001,,Special privileges assigned to new logon.,0,0.99307334,0.99307334,0.006049894,0.00087685854
+test_chain_001,,Non service account logged off.,0,0.99809444,0.99809444,0.0018206037,8.491244e-05
+test_chain_001,,Windows Logon Success,0,0.98967147,0.98967147,0.00837796,0.0019505216
+test_chain_001,,Non network or service local logon.,0,0.99744,0.99744,0.0024044125,0.00015559011
+test_chain_001,,Special privileges assigned to new logon.,0,0.992852,0.992852,0.006188113,0.0009600208
+test_chain_001,,Non service account logged off.,0,0.9980573,0.9980573,0.0018509582,9.16907e-05
+test_chain_001,,Non network or service local logon.,0,0.99739933,0.99739933,0.002436014,0.00016462283
+test_chain_001,,Special privileges assigned to new logon.,0,0.9927172,0.9927172,0.0062676226,0.0010149527
+test_chain_001,,Non service account logged off,0,0.99803656,0.99803656,0.0018668756,9.6446805e-05
+test_chain_001,,Non network or service local logon.,0,0.9973577,0.9973577,0.0024680484,0.00017419309
+test_chain_001,,Special privileges assigned to new logon.,0,0.99258494,0.99258494,0.006343432,0.0010714969
+test_chain_001,,Non service account logged off.,0,0.9980045,0.9980045,0.0018925552,0.00010292848
+test_chain_001,,Non network or service local logon.,0,0.99731517,0.99731517,0.002500212,0.00018447833
+test_chain_001,,Special privileges assigned to new logon,0,0.99246573,0.99246573,0.006420144,0.0011141063
+test_chain_001,,Non service account logged off.,0,0.9979833,0.9979833,0.0019087403,0.00010787468
+test_chain_001,,Non network or service local logon.,0,0.99727726,0.99727726,0.0025288276,0.0001940019
+test_chain_001,,Special privileges assigned to new logon.,0,0.99230814,0.99230814,0.006497725,0.001194195
+test_chain_001,,Non service account logged off,0,0.9979707,0.9979707,0.0019175897,0.00011176719
+test_chain_001,,Non network or service local logon.,0,0.99724466,0.99724466,0.002552207,0.00020301963
+test_chain_001,,Special privileges assigned to new logon.,0,0.9921785,0.9921785,0.006564776,0.001256679
+test_chain_001,,Non service account logged off.,0,0.99794,0.99794,0.0019415121,0.00011844186
+test_chain_001,,Non network or service local logon,0,0.9972259,0.9972259,0.0025637918,0.00021039556
+test_chain_001,,Special privileges assigned to new logon,0,0.9921138,0.9921138,0.006599342,0.00128694
+test_chain_001,,Non service account logged off.,0,0.9979241,0.9979241,0.0019519016,0.00012400831
+test_chain_001,,Non network or service local logon.,0,0.99719447,0.99719447,0.0025824364,0.00022304345
+test_chain_001,,Special privileges assigned to new logon.,0,0.9919948,0.9919948,0.006641918,0.001363247
+test_chain_001,,Non service account logged off.,0,0.99790835,0.99790835,0.001961665,0.00012987875
+test_chain_001,,Non network or service local logon.,0,0.9971707,0.9971707,0.0025956312,0.00023354232
+test_chain_001,,Special privileges assigned to new logon.,0,0.99189925,0.99189925,0.0066773314,0.0014234238
+test_chain_001,,Non service account logged off.,0,0.9978923,0.9978923,0.0019716865,0.00013600654
+test_chain_001,,Windows Logon Success,0,0.9882293,0.9882293,0.008855495,0.0029152597
+test_chain_001,,Windows Logon Success,0,0.9881706,0.9881706,0.008870732,0.0029586116
+test_chain_001,,Non network or service local logon.,0,0.9971298,0.9971298,0.0026180956,0.00025211062
+test_chain_001,,Special privileges assigned to new logon.,0,0.99172395,0.99172395,0.006724693,0.0015512623
+test_chain_001,,Non service account logged off.,0,0.9978639,0.9978639,0.0019893125,0.00014678549
+test_chain_001,,Windows Logon Success,0,0.98792946,0.98792946,0.008931908,0.0031385508
+test_chain_001,,Windows Logon Success,0,0.9878674,0.9878674,0.00894725,0.003185217
+test_chain_001,,Windows Logon Success,0,0.9999873,0.9999873,1.2676544e-07,1.2565248e-05
+test_chain_001,,Windows Logon Success,0,0.9999873,0.9999873,1.2679011e-07,1.2556191e-05
+test_chain_001,,Non network or service local logon.,0,0.9970577,0.9970577,0.0026611781,0.00028126533
+test_chain_001,,Special privileges assigned to new logon.,0,0.9914263,0.9914263,0.006812199,0.0017614658
+test_chain_001,,Non service account logged off,0,0.99781346,0.99781346,0.0020245851,0.00016200899
+test_chain_001,,Windows System error event,0,0.9999562,0.9999562,5.338732e-07,4.3299442e-05
+test_chain_001,,Non network or service local logon.,0,0.99699897,0.99699897,0.002700825,0.00030017394
+test_chain_001,,Special privileges assigned to new logon.,0,0.99123585,0.99123585,0.0068676383,0.0018964871
+test_chain_001,,Non service account logged off.,0,0.99776065,0.99776065,0.0020643612,0.00017498323
+test_chain_001,,Non network or service local logon.,0,0.99694574,0.99694574,0.0027387955,0.0003153627
+test_chain_001,,Special privileges assigned to new logon.,0,0.9910896,0.9910896,0.0069049653,0.0020054593
+test_chain_001,,Windows Logon Success,0,0.98706824,0.98706824,0.00916356,0.0037682157
+test_chain_001,,Non service account logged off.,0,0.99770886,0.99770886,0.002103599,0.00018741719
+test_chain_001,,Non network or service local logon,0,0.99688715,0.99688715,0.0027810747,0.0003317694
+test_chain_001,,Special privileges assigned to new logon..,0,0.99078786,0.99078786,0.006976114,0.0022359157
+test_chain_001,,Non service account logged off.,0,0.99766964,0.99766964,0.0021330179,0.00019731866
+test_chain_001,,Windows Logon Success,0,0.9867621,0.9867621,0.009253599,0.0039844047
+test_chain_001,,Windows Logon Success,0,0.986704,0.986704,0.009272391,0.0040235273
+test_chain_001,,Windows Logon Success,0,0.98664576,0.98664576,0.0092912195,0.004063034
+test_chain_001,,Non network or service local logon.,0,0.9967702,0.9967702,0.0028549829,0.00037471447
+test_chain_001,,Special privileges assigned to new logon.,0,0.9903837,0.9903837,0.00714609,0.0024701809
+test_chain_001,,Non service account logged off.,0,0.99759686,0.99759686,0.0021851978,0.00021788727
+test_chain_001,,Windows Logon Success,0,0.98638654,0.98638654,0.0093752565,0.0042381412
+test_chain_001,,Windows Logon Success,0,0.98625815,0.98625815,0.009428,0.004313757
+test_chain_001,,Non network or service local logon.,0,0.9966554,0.9966554,0.0029270041,0.00041747768
+test_chain_001,,Special privileges assigned to new logon.,0,0.9898694,0.9898694,0.007325701,0.0028049466
+test_chain_001,,Non service account logged off.,0,0.99753296,0.99753296,0.0022275199,0.00023945185
+test_chain_001,,Software protection service scheduled successfully.,0,0.9771451,0.9771451,0.010721716,0.012133156
+test_chain_001,,Non network or service local logon.,0,0.9965754,0.9965754,0.0029715933,0.00045290886
+test_chain_001,,Special privileges assigned to new logon.,0,0.98935765,0.98935765,0.007500789,0.0031415059
+test_chain_001,,Non service account logged off.,0,0.9974771,0.9974771,0.0022644608,0.00025833235
+test_chain_001,,Non network or service local logon.,0,0.996512,0.996512,0.0030058052,0.00048209153
+test_chain_001,,Special privileges assigned to new logon.,0,0.98905164,0.98905164,0.0075811706,0.0033672263
+test_chain_001,,Non service account logged off,0,0.99745214,0.99745214,0.0022769237,0.00027087584
+test_chain_001,,Non network or service local logon.,0,0.9964457,0.9964457,0.003040669,0.0005134977
+test_chain_001,,Special privileges assigned to new logon.,0,0.9887343,0.9887343,0.007662054,0.0036036856
+test_chain_001,,Non service account logged off.,0,0.9973639,0.9973639,0.0023407014,0.00029539305
+test_chain_001,,Windows Logon Success,0,0.98408914,0.98408914,0.010248025,0.005662774
+test_chain_001,,Windows Logon Success,0,0.98391896,0.98391896,0.010303788,0.005777259
+test_chain_001,,Non network or service local logon.,0,0.99629134,0.99629134,0.0031279651,0.00058070023
+test_chain_001,,Special privileges assigned to new logon.,0,0.9881282,0.9881282,0.007816278,0.004055502
+test_chain_001,,Non service account logged aff,0,0.9947765,0.9947765,0.0042799143,0.00094358716
+test_chain_001,,Non network or service local logon.,0,0.996173,0.996173,0.0031943466,0.00063254155
+test_chain_001,,Special privileges assigned to new logon,0,0.98783386,0.98783386,0.007924934,0.0042412244
+test_chain_001,,Non service account logged off.,0,0.9971958,0.9971958,0.002443873,0.0003603417
+test_chain_001,,Non network or service local logon.,0,0.9960633,0.9960633,0.0032499146,0.0006867277
+test_chain_001,,Special privileges assigned to new logon.,0,0.9872464,0.9872464,0.00804627,0.0047073583
+test_chain_001,,Non service account logged off,0,0.99715513,0.99715513,0.0024651033,0.00037971616
+test_chain_001,,Windows Logon Success,0,0.98158467,0.98158467,0.01106659,0.007348673
