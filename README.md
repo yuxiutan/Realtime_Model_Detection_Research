@@ -92,7 +92,7 @@ python inference.py
 python app.py
 ```
 
-### (Optional) Step 5 : Automated scheduling
+### Step 5 (Optional) : Automated scheduling
 
 ```bash
 chmod +x /home/youruser/Realtime_Transformer_Chain_Detection/utils/clear_log.sh
