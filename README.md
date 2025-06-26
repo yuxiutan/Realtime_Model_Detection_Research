@@ -27,23 +27,23 @@ Realtime_Transformer_Chain_Detection/
 │ │ ├── prediction_results_Chain0.csv
 │ │ ├── prediction_results_Chain1.csv
 │ │ └── prediction_results_Chain2.csv
-│ ├── improved_preprocessors.pkl
-│ ├── improved_transformer_model.keras  # Saved trained model
-│ ├── inference.py
-│ ├── model_build.py  # Train LSTM model, output metrics
+│ ├── improved_preprocessors.pkl    # Encoders and transformers
+│ ├── improved_transformer_model.keras  # # Trained Transformer model
+│ ├── inference.py    # Real-time prediction & scoring
+│ ├── model_build.py  # Train Transformer model, output metrics
 ├── data/
-│ ├── attack_chain_0.jsonl
-│ ├── attack_chain_1.jsonl
-│ ├── attack_chain_2.jsonl
-│ └── new_attack_data.jsonl
+│ ├── attack_chain_0.jsonl     # Training logs for Chain 0
+│ ├── attack_chain_1.jsonl     # Training logs for Chain 1
+│ ├── attack_chain_2.jsonl     # Training logs for Chain 2
+│ └── new_attack_data.jsonl    # New log data for evaluation
 ├── utils/
-│ └── wazuh_api.py                   # Script to fetch and parse Wazuh API logs
-├── model_info.txt                   # Model hyperparameters and info
-├── Model_confusion_matrix.png      # Confusion matrix visualization
-├── Model_roc_auc.png               # ROC curve visualization
-├── Model_training_history.png      # Accuracy/loss training curves
-├── app.py                           # Live dashboard via Dash framework
-└── requirements.txt                 # Python dependency list
+│ └── wazuh_api.py                  # Wazuh API integration script
+├── model_info.txt                  # Model structure & parameters
+├── Model_confusion_matrix.png      # Confusion matrix plot
+├── Model_roc_auc.png               # ROC curve and AUC plot
+├── Model_training_history.png      # Training loss/accuracy
+├── app.py                          # Dash-based dashboard
+└── requirements.txt                # Python dependency list
 ```
 
 ## ⚙️ Setup Instructions
