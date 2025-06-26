@@ -30,17 +30,13 @@ Realtime_Transformer_Chain_Detection/
 │ ├── attack_chain_0.jsonl
 │ ├── attack_chain_1.jsonl
 │ ├── attack_chain_2.jsonl
+│ ├── improved_preprocessors.pkl
+│ ├── improved_transformer_model.keras  # Saved trained model
 │ ├── inference.py
 │ ├── model_build.py  # Train LSTM model, output metrics
 │ └── new_attack_data.jsonl
 ├── utils/
 │ └── wazuh_api.py                   # Script to fetch and parse Wazuh API logs
-├── data/
-│ └── generated_wazuh_logs.jsonl     # Raw logs from Wazuh API (JSONL)
-├── model/
-│ ├── attack_chain_vectors.npy       # Precomputed attack chain embeddings
-│ ├── build_model.py                 
-│ └── lstm_attack_chain_model.keras  # Saved trained model
 ├── model_info.txt                   # Model hyperparameters and info
 ├── Model_confusion_matrix.png      # Confusion matrix visualization
 ├── Model_roc_auc.png               # ROC curve visualization
