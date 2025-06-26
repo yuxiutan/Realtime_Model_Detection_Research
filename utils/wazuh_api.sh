@@ -17,6 +17,6 @@ curl -k -u admin:0000 -X GET "https://192.168.6.101:9200/wazuh-alerts-*/_search"
   "agent.name": .["agent.name"],
   "agent.id": .["agent.id"],
   "rule.id": .["rule.id"],
-  "rule.mitre.id": .["rule.mitre.id"],
+  "rule.mitre.id": (if .["rule.mitre.id"] == null then "T0000" else .["rule.mitre.id"] end),
   "full_log": .["full_log"]
 }' >> /home/youruser/Realtime_Transformer_Chain_Detection/data/new_attack_data.jsonl
