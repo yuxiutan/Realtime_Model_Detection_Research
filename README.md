@@ -53,8 +53,8 @@ Realtime_Transformer_Chain_Detection/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yuxiutan/Realtime_LSTM_Chain_Detection.git
-cd Realtime_LSTM_Chain_Detection
+git clone https://github.com/yuxiutan/Realtime_Transformer_Chain_Detection.git
+cd Realtime_Transformer_Chain_Detection
 ```
 
 ### 2. Create Virtual Environment (Optional but Recommended)
@@ -72,22 +72,16 @@ pip install -r requirements.txt
 
 ## 🚀 How to Use
 
-### Step 1: Prepare Dataset
+### Step 1: Prepare Dataset and Train the Model
 
 ```bash
-python preprocessing/prepare_dataset.py
+python Model/model_build.py
 ```
 
-### Step 2: Train the Model
+### Step 2: Run Real-time Detection
 
 ```bash
-python model/build_model.py
-```
-
-### Step 3: Run Real-time Detection
-
-```bash
-python Realtime_detection.py
+python inference.py
 ```
 
 ### Step 4: Launch the Dashboard
@@ -97,10 +91,9 @@ python app.py
 ```
 
 ## 📈 Visual Outputs
-- output_confusion_matrix.png – Model confusion matrix
-- output_roc_auc.png – ROC curve and AUC
-- output_training_history.png – Training accuracy and loss trends
-- classification_report.csv – Detailed classification report
+- Model_confusion_matrix.png – Model confusion matrix
+- Model_roc_auc.png – ROC curve and AUC
+- Model_training_history.png – Training accuracy and loss trends
 
 ## 🧠 Model Highlights
 - Bidirectional LSTM to capture context in both directions
