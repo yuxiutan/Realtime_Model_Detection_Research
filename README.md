@@ -18,35 +18,34 @@ This project aims to detect abnormal behaviors in industrial OT environments by 
 ## 📂 Project Structure
 
 ```bash
-Realtime_LSTM_Chain_Detection/
-├── analysis/                        # Model evaluation outputs
-│ ├── classification_report.csv      # Precision, Recall, F1-score per class
+Realtime_Transformer_Chain_Detection/
+├── Model/                        # Model evaluation outputs
+│ ├── Report/
+│ │ ├──
+│ │ ├──
+│ │ ├──
+│ │ ├──
+│ │ ├──
+│ │ └── output_training_metrics.json   # Accuracy/loss logs per epoch # Precision, Recall, F1-score per class
+│ ├──
+│ ├──
+│ ├──
+│ ├──
+│ ├──  
 │ └── output_training_metrics.json   # Accuracy/loss logs per epoch
-├── classes/                         # LabelEncoder class mappings
-│ ├── agent_id_classes.npy
-│ ├── agent_ip_classes.npy
-│ ├── agent_name_classes.npy
-│ ├── attack_chain_classes.npy
-│ ├── eventdata_image_classes.npy
-│ ├── mitre_id_classes.npy
-│ └── rule_id_classes.npy
+├── utils/
+│ └── wazuh_api.py                   # Script to fetch and parse Wazuh API logs
 ├── data/
 │ └── generated_wazuh_logs.jsonl     # Raw logs from Wazuh API (JSONL)
 ├── model/
 │ ├── attack_chain_vectors.npy       # Precomputed attack chain embeddings
 │ ├── build_model.py                 # Train LSTM model, output metrics
 │ └── lstm_attack_chain_model.keras  # Saved trained model
-├── preprocessing/
-│ └── prepare_dataset.py             # Label encoding, padding, slicing
-├── utils/
-│ └── wazuh_api.py                   # Script to fetch and parse Wazuh API logs
-├── Realtime_detection.py            # Real-time inference & similarity computation
-├── app.py                           # Live dashboard via Dash framework
-├── encoders.pkl                     # Serialized LabelEncoders
 ├── model_info.txt                   # Model hyperparameters and info
-├── output_confusion_matrix.png      # Confusion matrix visualization
-├── output_roc_auc.png               # ROC curve visualization
-├── output_training_history.png      # Accuracy/loss training curves
+├── Model_confusion_matrix.png      # Confusion matrix visualization
+├── Model_roc_auc.png               # ROC curve visualization
+├── Model_training_history.png      # Accuracy/loss training curves
+├── app.py                           # Live dashboard via Dash framework
 └── requirements.txt                 # Python dependency list
 ```
 
