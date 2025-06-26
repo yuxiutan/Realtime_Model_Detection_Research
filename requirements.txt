@@ -83,3 +83,5 @@ tzdata==2025.2
 Werkzeug==3.0.6
 wrapt==1.17.2
 zipp==3.21.0
+xgboost==3.0.2
+nvidia-nccl-cu12==2.27.5
