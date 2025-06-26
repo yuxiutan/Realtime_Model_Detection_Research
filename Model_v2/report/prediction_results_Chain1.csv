@@ -1,0 +1,52 @@
+full_log,predicted_chain,confidence,chain_0_probability,chain_1_probability,chain_2_probability
+Windows System error event,0,0.5792958,0.5792958,0.42011377,0.0005904107
+Non network or service local logon.,0,0.569107,0.569107,0.4028879,0.028005162
+Special privileges assigned to new logon.,0,0.85585916,0.85585916,0.124109216,0.020031508
+Non service account logged off.,0,0.6750098,0.6750098,0.3164758,0.008514292
+Non network or service local logon.,0,0.569107,0.569107,0.4028879,0.028005162
+Special privileges assigned to new logon.,0,0.85585916,0.85585916,0.124109216,0.020031508
+Non service account logged off.,0,0.6750098,0.6750098,0.3164758,0.008514292
+Non network or service local logon.,0,0.569107,0.569107,0.4028879,0.028005162
+Special privileges assigned to new logon.,0,0.85585916,0.85585916,0.124109216,0.020031508
+Non service account logged off.,0,0.6750098,0.6750098,0.3164758,0.008514292
+Non network or service local logon.,0,0.569107,0.569107,0.4028879,0.028005162
+Special privileges assigned to new logon.,0,0.85585916,0.85585916,0.124109216,0.020031508
+Non service account logged off.,0,0.6750098,0.6750098,0.3164758,0.008514292
+Non network or service local logon.,0,0.569107,0.569107,0.4028879,0.028005162
+Special privileges assigned to new logon.,0,0.85585916,0.85585916,0.124109216,0.020031508
+Non service account logged off.,0,0.6750098,0.6750098,0.3164758,0.008514292
+Non network or service local logon.,0,0.569107,0.569107,0.4028879,0.028005162
+Special privileges assigned to new logon.,0,0.85585916,0.85585916,0.124109216,0.020031508
+Non service account logged off.,0,0.6750098,0.6750098,0.3164758,0.008514292
+Non network or service local logon.,0,0.569107,0.569107,0.4028879,0.028005162
+Special privileges assigned to new logon.,0,0.85585916,0.85585916,0.124109216,0.020031508
+Non service account logged off.,0,0.6750098,0.6750098,0.3164758,0.008514292
+Windows Logon Success,0,0.79776585,0.79776585,0.100150205,0.102084026
+Non network or service local logon.,0,0.569107,0.569107,0.4028879,0.028005162
+Special privileges assigned to new logon.,0,0.85585916,0.85585916,0.124109216,0.020031508
+Non service account logged off.,0,0.6750098,0.6750098,0.3164758,0.008514292
+Non network or service local logon.,0,0.569107,0.569107,0.4028879,0.028005162
+Special privileges assigned to new logon.,0,0.85585916,0.85585916,0.124109216,0.020031508
+Non service account logged off.,0,0.6750098,0.6750098,0.3164758,0.008514292
+Special privileges assigned to new logon.,0,0.9236288,0.9236288,0.076313086,5.8120462e-05
+"Successful Remote Session Detected - User:Cindy - NTLM authentication, possible pass-the-hash attack - Possible RDP connection. Verify that BOB is allowed to perform RDP connections",0,0.560408,0.560408,0.43951827,7.3756106e-05
+Special privileges assigned to new logon.,0,0.9236287,0.9236287,0.07631318,5.812035e-05
+"Successful Remote Session Detected - User:Cindy - NTLM authentication, possible pass-the-hash attack - Possible RDP connection. Verify that BOB is allowed to perform RDP connections",0,0.56040806,0.56040806,0.43951824,7.375604e-05
+Non network or service local logon.,0,0.569107,0.569107,0.4028879,0.028005162
+Special privileges assigned to new logon.,0,0.85585916,0.85585916,0.124109216,0.020031508
+Non service account logged off.,0,0.6750098,0.6750098,0.3164758,0.008514292
+Non network or service local logon.,0,0.569107,0.569107,0.4028879,0.028005162
+Special privileges assigned to new logon.,0,0.85585916,0.85585916,0.124109216,0.020031508
+Non service account logged off.,0,0.6750098,0.6750098,0.3164758,0.008514292
+Non network or service local logon.,0,0.569107,0.569107,0.4028879,0.028005162
+Special privileges assigned to new logon.,0,0.85585916,0.85585916,0.124109216,0.020031508
+Non service account logged off.,0,0.6750098,0.6750098,0.3164758,0.008514292
+Non network or service local logon.,0,0.569107,0.569107,0.4028879,0.028005162
+Special privileges assigned to new logon.,0,0.85585916,0.85585916,0.124109216,0.020031508
+Non service account logged off.,0,0.6750098,0.6750098,0.3164758,0.008514292
+Non network or service local logon.,0,0.569107,0.569107,0.4028879,0.028005162
+Special privileges assigned to new logon.,0,0.85585916,0.85585916,0.124109216,0.020031508
+Non service account logged off.,0,0.6750098,0.6750098,0.3164758,0.008514292
+Non network or service local logon.,0,0.56910694,0.56910694,0.40288785,0.028005159
+Special privileges assigned to new logon.,0,0.8558592,0.8558592,0.12410922,0.02003151
+Non service account logged off.,0,0.6750099,0.6750099,0.31647584,0.008514297
