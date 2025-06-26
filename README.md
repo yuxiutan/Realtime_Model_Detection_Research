@@ -37,6 +37,7 @@ Realtime_Transformer_Chain_Detection/
 │ ├── attack_chain_2.jsonl     # Training logs for Chain 2
 │ └── new_attack_data.jsonl    # New log data for evaluation
 ├── utils/
+│ ├── clear_log.sh
 │ └── wazuh_api.py                  # Wazuh API integration script
 ├── model_info.txt                  # Model structure & parameters
 ├── Model_confusion_matrix.png      # Confusion matrix plot
