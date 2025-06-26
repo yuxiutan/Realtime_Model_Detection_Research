@@ -3,16 +3,16 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 ## 📌 Project Overview
 
-This project aims to detect abnormal behaviors in industrial OT environments by training an LSTM model with logs collected from **Wazuh** via API. It identifies potential multi-step attack chains and triggers alerts based on similarity scores. A real-time monitoring dashboard is provided using **Dash**.
+This project leverages a Transformer-based model to detect and classify three types of cyber attack chains by analyzing event logs collected from Wazuh. It identifies abnormal sequences based on similarity scoring with pre-trained attack patterns and visualizes predictions through a real-time Dash dashboard.
 
 ## 📌 Project Features
 
 - 🔍 **Transformer-based sequential behavior classification**
-- 🛡️ **Wazuh integration** for log collection from ICS environments
-- 📊 **Real-time similarity scoring** between observed events and trained attack vectors
-- 📉 **Model performance visualization** (Confusion Matrix, ROC/AUC, Training History)
-- ⚙️ **Dash-powered dashboard** for live monitoring
-- 🔁 **Modular design** for easy reuse of preprocessing, model, and API logic
+- 🛡️ **Wazuh integration** for real-time security event collection
+- 📊 **Real-time similarity scoring** between new log sequences and learned attack behaviors
+- 📉 **Model performance visualization** Confusion Matrix, ROC Curve, AUC, Training History
+- ⚙️ **Live dashboard** for monitoring detection results and model confidence
+- 🔁 **Modular design** for preprocessing, training, inference, and visualization
 
 
 ## 📂 Project Structure
@@ -47,7 +47,7 @@ Realtime_Transformer_Chain_Detection/
 
 ## ⚙️ Setup Instructions
 ### Environment
-- Operating System: Ubuntu 22.04 (Best)
+- Operating System: Ubuntu 22.04 (recommended)
 - RAM: 12GB
 
 ### 1. Clone the Repository
@@ -96,11 +96,11 @@ python app.py
 - Model_training_history.png – Training accuracy and loss trends
 
 ## 🧠 Model Highlights
-- Bidirectional LSTM to capture context in both directions
-- Embedding layers to vectorize categorical ICS log features
-- Sequence length = 10 (customizable)
-- Softmax output for attack chain classification
-- Similarity comparison against precomputed class vectors for abnormal detection
+- Transformer Encoder for capturing complex temporal behavior
+- Sequence length: 10 consecutive logs as model input
+- Input features: Encoded fields like agent.ip, agent.name, rule.id, etc.
+- Output: Softmax-based attack chain prediction
+- Similarity scoring with class vectors to detect potential anomalies
 
 ## 📄 License
 This project is licensed under the [MIT License](LICENSE).
