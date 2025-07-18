@@ -10,6 +10,11 @@ import ipaddress
 import os
 import pickle
 from scipy.stats import gaussian_kde
+import requests
+from dotenv import load_dotenv
+
+# Load .env file
+load_dotenv()
 
 def ip_to_int(ip):
     try:
@@ -28,14 +33,14 @@ def load_jsonl_data(file_path):
                 record = json.loads(line.strip())
                 data.append(record)
             except json.JSONDecodeError as e:
-                print(f"JSON parsing error at line: {e}")
+                print(f"JSON parsing error on line: {e}")
                 continue
     
     if not data:
-        raise ValueError("No data loaded successfully")
+        raise ValueError("No data successfully loaded")
     
     df = pd.DataFrame(data)
-    print(f"Successfully loaded {len(df)} logs")
+    print(f"Successfully loaded {len(df)} log entries")
     return df
 
 def preprocess_new_data(df, tokenizer, scaler, vectorizer, max_sequence_length=60):
@@ -133,6 +138,52 @@ def preprocess_new_data(df, tokenizer, scaler, vectorizer, max_sequence_length=6
     
     return padded_sequences, static_features, df
 
+def send_discord_alert(webhook_url, message):
+    data = {
+        "content": message,
+        "username": "Security Alert Bot"
+    }
+    try:
+        response = requests.post(webhook_url, json=data)
+        if response.status_code == 204:
+            print("Discord alert sent successfully")
+        else:
+            print(f"Discord alert failed with status code: {response.status_code}")
+    except Exception as e:
+        print(f"Failed to send Discord alert: {e}")
+
+def send_wazuh_alert(wazuh_api_url, username, password, alert_message, agent_id="000", rule_id="100005", level=12):
+    try:
+        # Wazuh API authentication
+        auth_url = f"{wazuh_api_url}/security/user/authenticate"
+        auth_response = requests.get(auth_url, auth=(username, password), verify=False)
+        auth_response.raise_for_status()
+        token = auth_response.json()['data']['token']
+
+        # Construct alert log string with required metadata
+        log_message = (
+            f"[Custom Alert] rule_id={rule_id} level={level} agent_id={agent_id} "
+            f"description=Custom high-confidence attack chain alert {alert_message}"
+        )
+
+        # Build alert data for Wazuh API /events endpoint
+        alert_data = {
+            "events": [log_message]
+        }
+
+        # Send alert to Wazuh API
+        headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
+        log_url = f"{wazuh_api_url}/events"
+        response = requests.post(log_url, headers=headers, json=alert_data, verify=False)
+        
+        if response.status_code in [200, 201]:
+            print("Wazuh alert sent successfully")
+        else:
+            print(f"Failed to send Wazuh alert: {response.status_code} - {response.text}")
+    
+    except Exception as e:
+        print(f"Failed to send Wazuh alert: {e}")
+
 def predict_new_data(df, transformer_model, tokenizer, scaler, vectorizer, max_sequence_length=60):
     X_seq, X_static, processed_df = preprocess_new_data(df, tokenizer, scaler, vectorizer, max_sequence_length)
     
@@ -162,8 +213,18 @@ def focal_loss(gamma=2.0, alpha=0.25):
     return focal_loss_fn
 
 if __name__ == "__main__":
+    # Configuration (loaded from .env file)
+    WAZUH_API_URL = os.getenv("WAZUH_API_URL")
+    WAZUH_API_USERNAME = os.getenv("WAZUH_API_USERNAME")
+    WAZUH_API_PASSWORD = os.getenv("WAZUH_API_PASSWORD")
+    DISCORD_WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL")
+
+    # Check for missing required environment variables
+    if not all([WAZUH_API_URL, WAZUH_API_USERNAME, WAZUH_API_PASSWORD, DISCORD_WEBHOOK_URL]):
+        raise ValueError("One or more required environment variables are missing (WAZUH_API_URL, WAZUH_API_USERNAME, WAZUH_API_PASSWORD, DISCORD_WEBHOOK_URL)")
+
     try:
-        transformer_model = tf.keras.models.load_model('Model/improved_transformer_model.keras', 
+        transformer_model = tf.keras.models.load_model('improved_transformer_model.keras', 
                                                      custom_objects={'focal_loss_fn': focal_loss(gamma=2.0, alpha=0.25)})
         print("Transformer model loaded successfully")
     except Exception as e:
@@ -171,7 +232,7 @@ if __name__ == "__main__":
         exit(1)
     
     try:
-        with open('Model/improved_preprocessors.pkl', 'rb') as f:
+        with open('improved_preprocessors.pkl', 'rb') as f:
             preprocessors = pickle.load(f)
             tokenizer = preprocessors['tokenizer']
             scaler = preprocessors['scaler']
@@ -181,7 +242,7 @@ if __name__ == "__main__":
         print(f"Failed to load preprocessors: {e}")
         exit(1)
     
-    file_path = 'data/new_attack_data.jsonl'
+    file_path = '/home/danish/Realtime_Model_Detection_Research/data/new_attack_data.jsonl'
     try:
         new_data = load_jsonl_data(file_path)
     except Exception as e:
@@ -197,9 +258,52 @@ if __name__ == "__main__":
             vectorizer
         )
         
-        print("\nInference results (first 10, see CSV file for full results):")
+        print("\nInference results (first 10 rows, see CSV file for complete results):")
         print(results[['full_log', 'predicted_chain', 'confidence', 
                       'chain_0_probability', 'chain_1_probability', 'chain_2_probability']].head(10))
+        
+        # List all unique agent.name and agent.ip
+        unique_agent_names = new_data['agent.name'].dropna().unique().tolist()
+        unique_agent_ips = new_data['agent.ip'].dropna().unique().tolist()
+        
+        print("\nDetected unique Agent names:")
+        print(", ".join(str(name) for name in unique_agent_names) if unique_agent_names else "None")
+        print("\nDetected unique Agent IP addresses:")
+        print(", ".join(str(ip) for ip in unique_agent_ips) if unique_agent_ips else "None")
+        
+        # Find the most frequent attack chain category and its average confidence
+        if not results['predicted_chain'].empty:
+            most_frequent_chain = results['predicted_chain'].value_counts().idxmax()
+            avg_confidence = results['confidence'].mean()
+            print(f"\nMost frequent attack chain category: {most_frequent_chain}")
+            print(f"Average confidence: {avg_confidence:.4f}")
+            
+            # Check if average confidence is greater than 0.7 and send alerts
+            if avg_confidence > 0.7:
+                alert_message = (
+                    f"⚠️ High Confidence Attack Chain Detected ⚠️\n"
+                    f"Most frequent attack chain category: {most_frequent_chain}\n"
+                    f"Average confidence: {avg_confidence:.4f}\n"
+                    f"Number of detected logs: {len(results)}\n"
+                    f"Detected unique Agent names: {', '.join(str(name) for name in unique_agent_names) if unique_agent_names else 'None'}\n"
+                    f"Detected unique Agent IP addresses: {', '.join(str(ip) for ip in unique_agent_ips) if unique_agent_ips else 'None'}\n"
+                    f"Time: {pd.Timestamp.now()}"
+                )
+                # Send Discord alert
+                send_discord_alert(DISCORD_WEBHOOK_URL, alert_message)
+                # Send Wazuh alert
+                agent_id = new_data['agent.id'].dropna().iloc[0] if 'agent.id' in new_data and not new_data['agent.id'].dropna().empty else "000"
+                send_wazuh_alert(
+                    wazuh_api_url=WAZUH_API_URL,
+                    username=WAZUH_API_USERNAME,
+                    password=WAZUH_API_PASSWORD,
+                    alert_message=alert_message,
+                    agent_id=agent_id,
+                    rule_id="100005",
+                    level=12
+                )
+        else:
+            print("\nNo valid attack chain prediction results")
         
         results.to_csv('prediction_results.csv', index=False)
         print("\nInference results saved as 'prediction_results.csv'")
@@ -214,7 +318,7 @@ if __name__ == "__main__":
         # Calculate and plot KDE curve
         kde = gaussian_kde(confidence_values)
         x_range = np.linspace(min(confidence_values), max(confidence_values), 100)
-        kde_values = kde(x_range) * len(confidence_values) * (max(confidence_values) - min(confidence_values)) / 20  # Scale adjustment to match histogram
+        kde_values = kde(x_range) * len(confidence_values) * (max(confidence_values) - min(confidence_values)) / 20
         plt.plot(x_range, kde_values, 'b-', lw=2, label='KDE')
         
         plt.title('Prediction Confidence Distribution')
@@ -224,7 +328,7 @@ if __name__ == "__main__":
         plt.grid(True, alpha=0.3)
         plt.tight_layout()
         
-        # Save plot
+        # Save the plot
         plt.savefig('prediction_confidence_distribution.png', dpi=300, bbox_inches='tight')
         print("Prediction confidence distribution plot saved as 'prediction_confidence_distribution.png'")
         plt.close()
