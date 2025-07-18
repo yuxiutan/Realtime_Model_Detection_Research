@@ -107,6 +107,7 @@ crontab -e
 
 0 0 * * * /bin/bash /home/youruser/Realtime_Transformer_Chain_Detection/utils/clear_log.sh
 */5 * * * * /bin/bash /home/youruser/Realtime_Transformer_Chain_Detection/utils/wazuh_api.sh
+
 ```
 
 
