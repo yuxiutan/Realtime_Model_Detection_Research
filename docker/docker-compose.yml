@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  realtime-model-detection:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: realtime-model-detection
+    ports:
+      - "8050:8050"
+    env_file:
+      - docker/.env
+    restart: always
+    working_dir: /app
