@@ -86,3 +86,4 @@ wrapt==1.17.2
 zipp==3.21.0
 xgboost==3.0.2
 nvidia-nccl-cu12==2.27.5
+python-dotenv
