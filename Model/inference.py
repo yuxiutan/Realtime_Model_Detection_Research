@@ -224,7 +224,8 @@ if __name__ == "__main__":
         raise ValueError("One or more required environment variables are missing (WAZUH_API_URL, WAZUH_API_USERNAME, WAZUH_API_PASSWORD, DISCORD_WEBHOOK_URL)")
 
     try:
-        transformer_model = tf.keras.models.load_model('improved_transformer_model.keras', 
+        model_path = os.path.join('Model', 'improved_transformer_model.keras')
+        transformer_model = tf.keras.models.load_model(model_path, 
                                                      custom_objects={'focal_loss_fn': focal_loss(gamma=2.0, alpha=0.25)})
         print("Transformer model loaded successfully")
     except Exception as e:
@@ -232,7 +233,8 @@ if __name__ == "__main__":
         exit(1)
     
     try:
-        with open('improved_preprocessors.pkl', 'rb') as f:
+        preprocessor_path = os.path.join('Model', 'improved_preprocessors.pkl')
+        with open(preprocessor_path, 'rb') as f:
             preprocessors = pickle.load(f)
             tokenizer = preprocessors['tokenizer']
             scaler = preprocessors['scaler']
@@ -242,9 +244,9 @@ if __name__ == "__main__":
         print(f"Failed to load preprocessors: {e}")
         exit(1)
     
-    file_path = '/home/danish/Realtime_Model_Detection_Research/data/new_attack_data.jsonl'
+    data_file_path_in_container = os.path.join('data', 'new_attack_data.jsonl')
     try:
-        new_data = load_jsonl_data(file_path)
+        new_data = load_jsonl_data(data_file_path_in_container)
     except Exception as e:
         print(f"Failed to load data: {e}")
         exit(1)
@@ -304,9 +306,13 @@ if __name__ == "__main__":
                 )
         else:
             print("\nNo valid attack chain prediction results")
-        
-        results.to_csv('prediction_results.csv', index=False)
-        print("\nInference results saved as 'prediction_results.csv'")
+       
+        output_report_dir = os.path.join('Model', 'Report')
+        os.makedirs(output_report_dir, exist_ok=True) # exist_ok=True
+
+        csv_output_path = os.path.join(output_report_dir, 'prediction_results.csv')
+        results.to_csv(csv_output_path, index=False)
+        print(f"\nInference results saved as '{csv_output_path}'")
 
         # Generate prediction confidence distribution plot
         plt.figure(figsize=(10, 6))
@@ -329,8 +335,9 @@ if __name__ == "__main__":
         plt.tight_layout()
         
         # Save the plot
-        plt.savefig('prediction_confidence_distribution.png', dpi=300, bbox_inches='tight')
-        print("Prediction confidence distribution plot saved as 'prediction_confidence_distribution.png'")
+        plot_output_path = os.path.join(output_report_dir, 'prediction_confidence_distribution.png')
+        plt.savefig(plot_output_path, dpi=300, bbox_inches='tight')
+        print(f"Prediction confidence distribution plot saved as '{plot_output_path}'")
         plt.close()
 
     except Exception as e:
