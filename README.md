@@ -113,7 +113,7 @@ crontab -e
 */5 * * * * /bin/bash /home/youruser/Realtime_Transformer_Chain_Detection/utils/wazuh_api.sh
 
 ```
-🐳 Docker Quick Deployment
+## 🐳 Docker Quick Deployment
 ### Prerequisites
 - Docker
 - Docker Compose
