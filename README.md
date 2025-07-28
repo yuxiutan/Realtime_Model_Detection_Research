@@ -1,21 +1,21 @@
 # Realtime_Transformer_Chain_Detection
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-## 📌 Project Overview
+## Project Overview
 
 This project leverages a Transformer-based model to detect and classify three types of cyber attack chains by analyzing event logs collected from Wazuh. It identifies abnormal sequences based on similarity scoring with pre-trained attack patterns and visualizes predictions through a real-time Dash dashboard.
 
-## 📌 Project Features
+## Project Features
 
-- 🔍 **Transformer-based sequential behavior classification**
-- 🛡️ **Wazuh integration** for real-time security event collection
-- 📊 **Real-time similarity scoring** between new log sequences and learned attack behaviors
-- 📉 **Model performance visualization** Confusion Matrix, ROC Curve, AUC, Training History
-- ⚙️ **Live dashboard** for monitoring detection results and model confidence
-- 🔁 **Modular design** for preprocessing, training, inference, and visualization
+- **Transformer-based sequential behavior classification**
+- **Wazuh integration** for real-time security event collection
+- **Real-time similarity scoring** between new log sequences and learned attack behaviors
+- **Model performance visualization** Confusion Matrix, ROC Curve, AUC, Training History
+- **Live dashboard** for monitoring detection results and model confidence
+- **Modular design** for preprocessing, training, inference, and visualization
 
 
-## 📂 Project Structure
+## Project Structure
 
 ```bash
 Realtime_Transformer_Chain_Detection/
@@ -51,7 +51,7 @@ Realtime_Transformer_Chain_Detection/
 └── requirements.txt                # Python dependency list
 ```
 
-## ⚙️ Setup Instructions
+## Setup Instructions
 ### Environment
 - Operating System: Ubuntu 22.04 (recommended)
 - RAM: 12GB
@@ -76,7 +76,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## 🚀 How to Use
+## How to Use
 
 ### Step 1: Prepare Dataset and Train the Model
 
@@ -113,7 +113,7 @@ crontab -e
 */5 * * * * /bin/bash /home/youruser/Realtime_Transformer_Chain_Detection/utils/wazuh_api.sh
 
 ```
-## 🐳 Docker Quick Deployment
+## Docker Quick Deployment
 ### Prerequisites
 - Docker
 - Docker Compose
@@ -152,20 +152,20 @@ docker-compose down
 docker-compose build --no-cache
 ```
 
-## 📈 Visual Outputs
+## Visual Outputs
 - Model_confusion_matrix.png – Model confusion matrix
 - Model_roc_auc.png – ROC curve and AUC
 - Model_training_history.png – Training accuracy and loss trends
 
-## 🧠 Model Highlights
+## Model Highlights
 - Transformer Encoder for capturing complex temporal behavior
 - Sequence length: 10 consecutive logs as model input
 - Input features: Encoded fields like agent.ip, agent.name, rule.id, etc.
 - Output: Softmax-based attack chain prediction
 - Similarity scoring with class vectors to detect potential anomalies
 
-## 📄 License
+## License
 This project is licensed under the [MIT License](LICENSE).
 
-## 🙏 Acknowledgements
+## Acknowledgements
 - Special thanks to the experts who provided technical support and advice.
