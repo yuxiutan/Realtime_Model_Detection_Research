@@ -5,8 +5,3 @@ __pycache__/
 *.ipynb
 *.csv
 .git/
-*.pkl
-*.jsonl
-Model/*.png
-Model/*.csv
-Model/*.txt
