@@ -1,13 +1,14 @@
 version: '3.8'
+
 services:
-  realtime-model-detection:
+  transformer-detection:
     build:
       context: ..
-      dockerfile: docker/Dockerfile
-    container_name: realtime-model-detection
+      dockerfile: ./docker/Dockerfile
     ports:
       - "8050:8050"
+    volumes:
+      - ../data:/app/data
     env_file:
-      - docker/.env
+      - ../utils/.env.local
     restart: always
-    working_dir: /app
