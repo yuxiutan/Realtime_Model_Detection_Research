@@ -36,6 +36,11 @@ Realtime_Transformer_Chain_Detection/
 │ ├── attack_chain_1.jsonl     # Training logs for Chain 1
 │ ├── attack_chain_2.jsonl     # Training logs for Chain 2
 │ └── new_attack_data.jsonl    # New log data for evaluation
+├── docker/
+│ ├── .dockerignore
+│ ├── .env.local
+│ ├── Dockerfile
+│ └── docker-compose.yml
 ├── utils/
 │ ├── clear_log.sh
 │ └── wazuh_api.py                  # Wazuh API integration script
