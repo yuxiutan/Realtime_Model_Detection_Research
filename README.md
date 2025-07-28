@@ -38,10 +38,10 @@ Realtime_Transformer_Chain_Detection/
 │ └── new_attack_data.jsonl    # New log data for evaluation
 ├── docker/
 │ ├── .dockerignore
-│ ├── .env.local
 │ ├── Dockerfile
 │ └── docker-compose.yml
 ├── utils/
+│ ├── .env.local
 │ ├── clear_log.sh
 │ └── wazuh_api.py                  # Wazuh API integration script
 ├── Model_confusion_matrix.png      # Confusion matrix plot
