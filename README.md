@@ -113,7 +113,44 @@ crontab -e
 */5 * * * * /bin/bash /home/youruser/Realtime_Transformer_Chain_Detection/utils/wazuh_api.sh
 
 ```
+🐳 Docker Quick Deployment
+### Prerequisites
+- Docker
+- Docker Compose
 
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/yuxiutan/Realtime_Transformer_Chain_Detection.git
+cd Realtime_Transformer_Chain_Detection
+```
+
+### 2. Build the Docker Image
+
+```bash
+docker-compose build
+```
+
+### 3. Run the Docker Containers
+
+```bash
+docker-compose up -d
+```
+
+### 4. Access the Dashboard
+- http://localhost:8050
+
+### Stop the Docker Containers
+
+```bash
+docker-compose down
+```
+
+### Rebuild Docker Image
+
+```bash
+docker-compose build --no-cache
+```
 
 ## 📈 Visual Outputs
 - Model_confusion_matrix.png – Model confusion matrix
