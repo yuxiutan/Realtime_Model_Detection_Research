@@ -44,7 +44,6 @@ Realtime_Transformer_Chain_Detection/
 ├── utils/
 │ ├── clear_log.sh
 │ └── wazuh_api.py                  # Wazuh API integration script
-├── model_info.txt                  # Model structure & parameters
 ├── Model_confusion_matrix.png      # Confusion matrix plot
 ├── Model_roc_auc.png               # ROC curve and AUC plot
 ├── Model_training_history.png      # Training loss/accuracy
