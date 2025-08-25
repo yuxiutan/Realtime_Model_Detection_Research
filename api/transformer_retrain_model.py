@@ -3,14 +3,29 @@ import json
 import numpy as np
 from tensorflow.keras.models import load_model
 from tensorflow.keras.optimizers import Adam
+from datetime import datetime
+import shutil
+import glob
 
 MODEL_PATH = os.path.join(os.path.dirname(__file__), "../Model/improved_transformer_model.keras")
+BACKUP_DIR = os.path.join(os.path.dirname(__file__), "../Model/backup")
 AUTO_LABELED_FILE = os.path.join(os.path.dirname(__file__), "../data/auto_labeled_logs.json")
 ORIGINAL_DATASET_FILES = [
     os.path.join(os.path.dirname(__file__), "../data/attack_chain_0.jsonl"),
     os.path.join(os.path.dirname(__file__), "../data/attack_chain_1.jsonl"),
     os.path.join(os.path.dirname(__file__), "../data/attack_chain_2.jsonl")
 ]
+
+def backup_model():
+    os.makedirs(BACKUP_DIR, exist_ok=True)
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    backup_path = os.path.join(BACKUP_DIR, f"improved_transformer_model_{timestamp}.keras")
+    shutil.copy2(MODEL_PATH, backup_path)
+    # 只保留最新5個
+    backups = sorted(glob.glob(os.path.join(BACKUP_DIR, "*.keras")), reverse=True)
+    for old_backup in backups[5:]:
+        os.remove(old_backup)
+    print(f"[INFO] 模型已備份: {backup_path}")
 
 def load_original_dataset():
     X_list, y_list = [], []
@@ -24,7 +39,9 @@ def load_original_dataset():
 
 def retrain():
     print("[INFO] 開始 retrain 模型...")
+    backup_model()
     X_orig, y_orig = load_original_dataset()
+
     if os.path.exists(AUTO_LABELED_FILE):
         with open(AUTO_LABELED_FILE, "r") as f:
             auto_data = json.load(f)
