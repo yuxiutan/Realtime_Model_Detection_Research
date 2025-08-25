@@ -47,7 +47,8 @@ Realtime_Transformer_Chain_Detection/
 ├── docker/
 │ ├── .dockerignore
 │ ├── Dockerfile
-│ └── docker-compose.yml
+│ ├── docker-compose.yml
+│ └──supervisord.conf
 ├── utils/
 │ ├── .env.local
 │ ├── clear_log.sh
