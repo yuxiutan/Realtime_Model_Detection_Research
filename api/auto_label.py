@@ -1,26 +1,23 @@
 import os
 import json
 import numpy as np
-from threading import Lock
 from sklearn.cluster import DBSCAN
+from threading import Lock
 
 LOCK = Lock()
-UNCERTAIN_LOG_FILE = os.path.join(os.path.dirname(__file__), "../dataset/uncertain_logs.json")
-AUTO_LABELED_FILE = os.path.join(os.path.dirname(__file__), "../dataset/auto_labeled_logs.json")
+UNCERTAIN_LOG_FILE = os.path.join(os.path.dirname(__file__), "../data/uncertain_logs.json")
+AUTO_LABELED_FILE = os.path.join(os.path.dirname(__file__), "../data/auto_labeled_logs.json")
 
-# 初始化 auto_labeled_logs.json
 if not os.path.exists(AUTO_LABELED_FILE):
     with open(AUTO_LABELED_FILE, "w") as f:
         json.dump([], f)
 
 def pseudo_labeling():
-    """對高信心 log 自動標記"""
     if not os.path.exists(UNCERTAIN_LOG_FILE):
         return
     with LOCK:
         with open(UNCERTAIN_LOG_FILE, "r") as f:
             data = json.load(f)
-        
         high_confidence_logs = [log for log in data if log["confidence"] >= 0.6]
         uncertain_logs = [log for log in data if log["confidence"] < 0.6]
 
@@ -35,7 +32,6 @@ def pseudo_labeling():
             json.dump(uncertain_logs, f, indent=2)
 
 def cluster_and_label():
-    """對低信心 log 做向量聚類，自動標籤"""
     if not os.path.exists(UNCERTAIN_LOG_FILE):
         return
     with LOCK:
