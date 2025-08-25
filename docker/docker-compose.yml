@@ -6,9 +6,12 @@ services:
       context: ..
       dockerfile: ./docker/Dockerfile
     ports:
-      - "8050:8050"
+      - "8050:8050"   # Dash Dashboard
+      - "8000:8000"   # FastAPI API
     volumes:
       - ../data:/app/data
+      - ../Model:/app/Model
+      - ../utils:/app/utils
     env_file:
       - ../utils/.env.local
     restart: always
