@@ -32,11 +32,11 @@ Realtime_Transformer_Chain_Detection/
 │ ├── inference.py    # Real-time prediction & scoring
 │ ├── model_build.py  # Train Transformer model, output metrics
 │── api/
-│   ├── inference.py       # 模型推論
-│   ├── train.py           # retrain 機制
-│   ├── auto_label.py      # pseudo-label + K-means
-│   ├── scheduler.py       # 自動 retrain 排程
-│   └── app.py             # FastAPI 主服務
+│   ├── inference.py                   # 模型推論
+│   ├── transformer_retrain_model.py   # retrain 機制
+│   ├── auto_label.py                  # pseudo-label + K-means
+│   ├── scheduler.py                   # 自動 retrain 排程
+│   └── app.py                         # FastAPI 主服務
 ├── data/
 │ ├── attack_chain_0.jsonl     # Training logs for Chain 0
 │ ├── attack_chain_1.jsonl     # Training logs for Chain 1
