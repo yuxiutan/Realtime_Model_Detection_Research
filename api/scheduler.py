@@ -1,15 +1,15 @@
 import time
-from datetime import datetime
 from threading import Thread
+from datetime import datetime
 from .auto_label import pseudo_labeling, cluster_and_label
 from .train import retrain
 from .inference import reload_model
 import os
 import json
 
-AUTO_LABELED_FILE = os.path.join(os.path.dirname(__file__), "../dataset/auto_labeled_logs.json")
+AUTO_LABELED_FILE = os.path.join(os.path.dirname(__file__), "../data/auto_labeled_logs.json")
 RETRAIN_INTERVAL_HOURS = 168  # 每週 retrain
-RETRAIN_MIN_LOGS = 50         # 自動 retrain 門檻
+RETRAIN_MIN_LOGS = 50
 
 def retrain_if_needed():
     pseudo_labeling()
