@@ -1,8 +1,8 @@
 import numpy as np
-from tensorflow.keras.models import load_model
 import os
+from tensorflow.keras.models import load_model
 
-MODEL_PATH = os.path.join(os.path.dirname(__file__), "../model/transformer_attack_chain_model.keras")
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "../Model/improved_transformer_model.keras")
 model = load_model(MODEL_PATH)
 
 def predict(features_batch):
@@ -12,7 +12,6 @@ def predict(features_batch):
     """
     x = np.array(features_batch)
     preds = model.predict(x)
-    # 可加入 confidence 判斷
     results = []
     for p in preds:
         pred_class = int(np.argmax(p))
