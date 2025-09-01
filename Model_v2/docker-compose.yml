@@ -10,6 +10,6 @@ services:
       - WAZUH_PASSWORD=SecretPassword
       - WAZUH_API_URL=https://100.79.144.59:9200/wazuh-alerts-*/_search
     volumes:
-      - /path/to/your/data:/app/data  # Mount your data folder (contains JSON files)
-      - /path/to/your/model:/app/model  # Mount model folder for persistence
+      - ./app/data:/app/data  # Mount host app/data to container /app/data
+      - ./app/model:/app/model  # Mount host app/model to container /app/model
     restart: always
