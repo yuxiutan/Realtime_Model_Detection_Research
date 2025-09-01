@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - WAZUH_USER=admin
+      - WAZUH_PASSWORD=SecretPassword
+      - WAZUH_API_URL=https://100.79.144.59:9200/wazuh-alerts-*/_search
+    volumes:
+      - /path/to/your/data:/app/data  # Mount your data folder (contains JSON files)
+      - /path/to/your/model:/app/model  # Mount model folder for persistence
+    restart: always
